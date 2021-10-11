@@ -60,9 +60,42 @@ if ( ! empty( $_POST ) && isset( $_POST['do-create-purchase-order'] ) ) {
 		}
 	}
 
-	unset( $_POST['do-create-purchase-order'], $_POST['product-qtys'], $_POST['product-prices'], $_POST['product-names'] );
+	if(isset($_POST['do-create-purchase-order'])){
+		unset( $_POST['do-create-purchase-order'] );
+    }
+	if(isset($_POST['product-qtys'])){
+		unset( $_POST['product-qtys'] );
+    }
+	if(isset($_POST['product-prices'])){
+		unset( $_POST['product-prices'] );
+    }
+	if(isset($_POST['product-names'])){
+		unset( $_POST['product-names'] );
+    }
 
-	$po_data_post_2                  = $po_data_session = $_POST;
+	$po_data_post_2 = array();
+	$po_data_post_2['supplier_id'] = isset( $_POST['purchase_order_num'] ) ? (int) $_POST['purchase_order_num'] : '';
+	$po_data_post_2['warehouse_id'] = isset( $_POST['purchase_order_num'] ) ? (int) $_POST['warehouse_id'] : '';
+	$po_data_post_2['purchase_order_num'] = isset( $_POST['purchase_order_num'] ) ? sanitize_title($_POST['purchase_order_num']) : '';
+	$po_data_post_2['order_prefix'] = isset( $_POST['order_prefix'] ) ? sanitize_title($_POST['order_prefix']) : '';
+	$po_data_post_2['order_number'] = isset( $_POST['order_number'] ) ? sanitize_title($_POST['order_number']) : '';
+	$po_data_post_2['purchase_order_num'] = isset( $_POST['purchase_order_num'] ) ? sanitize_title($_POST['purchase_order_num']) : '';
+	$po_data_post_2['payment_terms'] = isset( $_POST['payment_terms'] ) ? sanitize_title($_POST['payment_terms']) : '';
+	$po_data_post_2['delivery_terms'] = isset( $_POST['delivery_terms'] ) ? sanitize_title($_POST['delivery_terms']) : '';
+	$po_data_post_2['vendor_no'] = isset( $_POST['vendor_no'] ) ? sanitize_title($_POST['vendor_no']) : '';
+	$po_data_post_2['vendor_vat'] = isset( $_POST['vendor_vat'] ) ? sanitize_title($_POST['vendor_vat']) : '';
+	$po_data_post_2['account_no'] = isset( $_POST['account_no'] ) ? sanitize_title($_POST['account_no']) : '';
+	$po_data_post_2['reference_number'] = isset( $_POST['reference_number'] ) ? sanitize_title($_POST['reference_number']) : '';
+	$po_data_post_2['order_date'] = isset( $_POST['order_date'] ) ? sanitize_title($_POST['order_date']) : '';
+	$po_data_post_2['expected_delivery_date'] = isset( $_POST['expected_delivery_date'] ) ? sanitize_title($_POST['expected_delivery_date']) : '';
+	$po_data_post_2['description'] = isset( $_POST['description'] ) ? sanitize_title($_POST['description']) : '';
+	$po_data_post_2['account_id'] = isset( $_POST['account_id'] ) ? sanitize_title($_POST['account_id']) : '';
+	$po_data_post_2['assigned_to'] = isset( $_POST['assigned_to'] ) ? sanitize_title($_POST['assigned_to']) : '';
+	$po_data_post_2['deliver_to'] = isset( $_POST['deliver_to'] ) ? sanitize_title($_POST['deliver_to']) : '';
+	$po_data_post_2['supplier_name'] = isset( $_POST['supplier_name'] ) ? sanitize_title($_POST['supplier_name']) : '';
+	$po_data_post_2['supplier_address'] = isset( $_POST['supplier_address'] ) ? sanitize_title($_POST['supplier_address']) : '';
+
+	$po_data_session = $po_data_post_2;
 	$po_data_session['product_data'] = json_encode( $po_data_json );
 
 	list( $po_num_prefix, $po_num_number ) = explode( '-', $po_data_post_2['purchase_order_num'], 2 );
@@ -76,7 +109,8 @@ if ( ! empty( $_POST ) && isset( $_POST['do-create-purchase-order'] ) ) {
 	update_option( 'sp.settings.po_next_number', $po_data_post_2['order_number'] );
 	update_option( 'sp.last_reference_number', sp_get_next_rn() );
 
-	unset( $po_data_post_2['purchase_order_num'], $po_data_post_2['payment_terms'], $po_data_post_2['delivery_terms'], $po_data_post_2['vendor_no'], $po_data_post_2['vendor_vat'], $po_data_post_2['account_no'], $po_data_post_2['account_id'], $po_data_post_2['assigned_to'], $po_data_post_2['supplier_name'], $po_data_post_2['supplier_address'] );
+	unset( $po_data_post_2['purchase_order_num'], $po_data_post_2['payment_terms'], $po_data_post_2['delivery_terms'],
+        $po_data_post_2['vendor_no'], $po_data_post_2['vendor_vat'], $po_data_post_2['account_no'], $po_data_post_2['account_id'], $po_data_post_2['assigned_to'], $po_data_post_2['supplier_name'], $po_data_post_2['supplier_address'] );
 
 	$wpdb->insert( $wpdb->purchase_orders, $po_data_post_2 );
 	$order_id = $wpdb->insert_id;

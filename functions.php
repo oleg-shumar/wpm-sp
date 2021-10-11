@@ -118,7 +118,7 @@ function sp_make_order_pdf() {
 	$currency_code = get_woocommerce_currency();
 	$contents      = file_get_contents( SP_ROOT_DIR . '/pages/order.html' );
 
-	$order_info = $_SESSION['order_info'];
+	$order_info = (array) $_SESSION['order_info'];
 
 	$html = '<style>#wpfooter { display: none }</style>';
 	$html .= '<h4>' . __( 'Purchase Orders', QA_MAIN_DOMAIN ) . '</h4>';
@@ -197,7 +197,8 @@ function sp_make_order_pdf() {
 		$product_rows[]   = $product_row;
 	}
 
-	$html_vars['product_data']  = esc_html( implode( "\n", $product_rows ) );
+	// Already escaped
+	$html_vars['product_data']  = implode( "\n", $product_rows );
 	$html_vars['product_total'] = '<tr>
             <td width="20%" style=""></td>
             <td width="45%" style="text-align: center; text-align:right; background-color: #d7d7d7; font-weight: bold">Total ' . esc_html( $currency_code ) . '</td>

@@ -3,7 +3,31 @@
 require_once __DIR__ . '/admin_page_header.php';
 
 if ( $_POST ) {
-	$data             = $_POST;
+
+	$data = array();
+	$data['supplier_name'] = isset($_POST['supplier_name']) ? sanitize_title( $_POST['supplier_name'] ) : '';
+	$data['supplier_code'] = isset($_POST['supplier_code']) ? sanitize_title( $_POST['supplier_code'] ) : '';
+	$data['tax_vat_number'] = isset($_POST['tax_vat_number']) ? sanitize_title( $_POST['tax_vat_number'] ) : '';
+	$data['phone_number'] = isset($_POST['phone_number']) ? sanitize_title( $_POST['phone_number'] ) : '';
+	$data['website'] = isset($_POST['website']) ? sanitize_title( $_POST['website'] ) : '';
+	$data['email_for_ordering'] = isset($_POST['email_for_ordering']) ? sanitize_email( $_POST['email_for_ordering'] ) : '';
+	$data['general_email_address'] = isset($_POST['general_email_address']) ? sanitize_email( $_POST['general_email_address'] ) : '';
+	$data['description'] = isset($_POST['description']) ? sanitize_title( $_POST['description'] ) : '';
+	$data['currency'] = isset($_POST['currency']) ? sanitize_title( $_POST['currency'] ) : '';
+	$data['address'] = isset($_POST['address']) ? sanitize_title( $_POST['address'] ) : '';
+	$data['city'] = isset($_POST['city']) ? sanitize_title( $_POST['city'] ) : '';
+	$data['country'] = isset($_POST['country']) ? sanitize_title( $_POST['country'] ) : '';
+	$data['state'] = isset($_POST['state']) ? sanitize_title( $_POST['state'] ) : '';
+	$data['account_no'] = isset($_POST['account_no']) ? sanitize_title( $_POST['account_no'] ) : '';
+	$data['account_id'] = isset($_POST['account_id']) ? sanitize_title( $_POST['account_id'] ) : '';
+	$data['assigned_to'] = isset($_POST['assigned_to']) ? sanitize_title( $_POST['assigned_to'] ) : '';
+	$data['ship_to_location'] = isset($_POST['ship_to_location']) ? sanitize_title( $_POST['ship_to_location'] ) : '';
+	$data['discount'] = isset($_POST['discount']) ? sanitize_title( $_POST['discount'] ) : '';
+	$data['tax_rate'] = isset($_POST['tax_rate']) ? sanitize_title( $_POST['tax_rate'] ) : '';
+	$data['lead_times'] = isset($_POST['lead_times']) ? sanitize_title( $_POST['lead_times'] ) : '';
+	$data['payment_terms'] = isset($_POST['payment_terms']) ? sanitize_title( $_POST['payment_terms'] ) : '';
+	$data['delivery_terms'] = isset($_POST['delivery_terms']) ? sanitize_title( $_POST['delivery_terms'] ) : '';
+
 	$data['dt_added'] = current_time( 'mysql', 1 );
 
 	if ( isset( $_GET['supplier_id'] ) ) {

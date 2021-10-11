@@ -5,10 +5,20 @@ global $wpdb;
 require_once __DIR__ . '/admin_page_header.php';
 
 if ( $_POST && isset( $_POST['save-warehouse'] ) ) {
-	unset( $_POST['save-warehouse'] );
-	$_POST['warehouse_use_same'] = intval( 'same' === $_POST['warehouse_use_same'] );
+	if(isset($_POST['save-warehouse'])){
+        unset( $_POST['save-warehouse'] );
+    }
 
-	$data = $_POST;
+	$data = array();
+	$data['warehouse_use_same'] = isset($_POST['warehouse_use_same']) ? intval( 'same' === $_POST['warehouse_use_same'] ) : '';
+	$data['warehouse_name'] = isset($_POST['warehouse_name']) ? sanitize_title( $_POST['warehouse_name'] ) : '';
+	$data['warehouse_address'] = isset($_POST['warehouse_address']) ? sanitize_title( $_POST['warehouse_address'] ) : '';
+	$data['warehouse_postal_code'] = isset($_POST['warehouse_postal_code']) ? sanitize_title( $_POST['warehouse_postal_code'] ) : '';
+	$data['warehouse_city'] = isset($_POST['warehouse_city']) ? sanitize_title( $_POST['warehouse_city'] ) : '';
+	$data['warehouse_country'] = isset($_POST['warehouse_country']) ? sanitize_title( $_POST['warehouse_country'] ) : '';
+	$data['warehouse_phone'] = isset($_POST['warehouse_phone']) ? sanitize_title( $_POST['warehouse_phone'] ) : '';
+	$data['warehouse_website'] = isset($_POST['warehouse_website']) ? sanitize_title( $_POST['warehouse_website'] ) : '';
+	$data['warehouse_email'] = isset($_POST['warehouse_email']) ? sanitize_email( $_POST['warehouse_email'] ) : '';
 
 	if ( isset( $_GET['warehouse_id'] ) ) {
 		$result = $wpdb->update( $wpdb->warehouses, $data, [

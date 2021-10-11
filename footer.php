@@ -2,9 +2,9 @@
 <a href="#top" id="back-to-top"><i class="las la-angle-double-up"></i></a>
 <!--Internal Apexchart js-->
 <?php if($_GET['page'] == 'sp_integrations'){ ?>
-<script src="<?= plugin_dir_url( __FILE__ ); ?>assets/js/apexcharts.js"></script>
+<script src="<?php echo  plugin_dir_url( __FILE__ ); ?>assets/js/apexcharts.js"></script>
 <?php } ?>
-<script src="<?= plugin_dir_url( __FILE__ ); ?>assets/js/custom.js"></script>
+<script src="<?php echo  plugin_dir_url( __FILE__ ); ?>assets/js/custom.js"></script>
 <?php if($_GET['page'] == 'sp_integrations'){ ?>
 <script>
     /*--- Apex (#chart) ---*/
@@ -72,7 +72,7 @@
         stroke: {
             dashArray: 4
         },
-        series: [<?=ShelfPlannerCore::getAnalyzedProgress();?>],
+        series: [<?php echo ShelfPlannerCore::getAnalyzedProgress();?>],
         labels: [""]
     };
 
@@ -83,9 +83,9 @@
      * Update progress chart(s)
      */
     function updateCharts() {
-        jQuery.get('<?=get_home_url();?>');
+        jQuery.get('<?php echo get_home_url();?>');
         jQuery('#sp-total-orders-count, #sp-analyzed-orders-count').html('Updating...');
-        jQuery.getJSON('<?= plugin_dir_url( __FILE__ ); ?>ajax.php', function (data) {
+        jQuery.getJSON('<?php echo  plugin_dir_url( __FILE__ ); ?>ajax.php', function (data) {
             jQuery('#sp-total-orders-count').html(data.total);
             jQuery('#sp-analyzed-orders-count').html(data.analyzed);
             window.chart.updateSeries([data.progress]);

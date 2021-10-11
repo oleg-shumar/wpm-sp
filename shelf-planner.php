@@ -496,7 +496,7 @@ function qa_main_adv_product_options() {
 	echo '<header><h4 style="padding-bottom: 0px !important; color:#000; margin-bottom: 0px; padding-left: 10px;">Shelf Planner Product Settings</h4></header>';
 	echo '<div class="options_group">';
 	?>
-    <input type="hidden" name="tmp_qa_stock" value="<?= $product->get_stock_quantity(); ?>"/>
+    <input type="hidden" name="tmp_qa_stock" value="<?php echo  $product->get_stock_quantity(); ?>"/>
 	<?php
 
 	$data = $wpdb->get_results( "SELECT * FROM {$wpdb->product_settings} WHERE product_id = " . get_the_ID(), ARRAY_A );

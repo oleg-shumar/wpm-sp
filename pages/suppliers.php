@@ -15,10 +15,10 @@ if ( $_POST ) {
 	}
 	if ( $result ) { ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-		<?= esc_html( $msg ) ?>
+		<?php echo  esc_html( $msg ) ?>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><?php
 	} else { ?>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert"><?= __( 'Error occurred, please try again', QA_MAIN_DOMAIN ); ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert"><?php echo  __( 'Error occurred, please try again', QA_MAIN_DOMAIN ); ?>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button></div><?php }
@@ -54,19 +54,19 @@ if ( $tmp ) {
                 <div class="page">
                     <!-- container opened -->
                     <div class="container">
-                        <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-                        <link href="<?= SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css" rel="stylesheet">
-                        <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/flat-ui.css">
-                        <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/common.css">
-                        <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-                        <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
-                        <script type="text/javascript" src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/tabulator.min.js"></script>
-                        <script type="text/javascript" src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/xlsx.full.min.js"></script>
-                        <h4><?= __( 'Suppliers', QA_MAIN_DOMAIN ); ?></h4>
+                        <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+                        <link href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css" rel="stylesheet">
+                        <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/flat-ui.css">
+                        <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/common.css">
+                        <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+                        <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+                        <script type="text/javascript" src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/tabulator.min.js"></script>
+                        <script type="text/javascript" src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/xlsx.full.min.js"></script>
+                        <h4><?php echo  __( 'Suppliers', QA_MAIN_DOMAIN ); ?></h4>
                         <div class="card">
                             <div class="card-body">
                                 <div class="main-content-label mg-b-5">
-									<?= __( 'Add New', QA_MAIN_DOMAIN ); ?>
+									<?php echo  __( 'Add New', QA_MAIN_DOMAIN ); ?>
                                 </div>
                                 <p class="mg-b-20"></p>
                                 <div class="row">
@@ -76,13 +76,13 @@ if ( $tmp ) {
                                             </button>
                                         </div>
                                         <div style="float:right;text-align: right;margin-bottom: 5px;width:70%">
-                                            <button id="download-csv" class="btn btn-sm btn-info"><?= __( 'Download CSV', QA_MAIN_DOMAIN ); ?>
+                                            <button id="download-csv" class="btn btn-sm btn-info"><?php echo  __( 'Download CSV', QA_MAIN_DOMAIN ); ?>
                                             </button>
-                                            <button id="download-json" class="btn btn-sm btn-info"><?= __( 'Download JSON', QA_MAIN_DOMAIN ); ?>
+                                            <button id="download-json" class="btn btn-sm btn-info"><?php echo  __( 'Download JSON', QA_MAIN_DOMAIN ); ?>
                                             </button>
-                                            <button id="download-xlsx" class="btn btn-sm btn-info"><?= __( 'Download XLSX', QA_MAIN_DOMAIN ); ?>
+                                            <button id="download-xlsx" class="btn btn-sm btn-info"><?php echo  __( 'Download XLSX', QA_MAIN_DOMAIN ); ?>
                                             </button>
-                                            <button id="download-html" class="btn btn-sm btn-info"><?= __( 'Download HTML', QA_MAIN_DOMAIN ); ?>
+                                            <button id="download-html" class="btn btn-sm btn-info"><?php echo  __( 'Download HTML', QA_MAIN_DOMAIN ); ?>
                                             </button>
                                         </div>
                                         <div id="table_1"></div>
@@ -159,7 +159,7 @@ if ( $tmp ) {
                                                 return true; //must return a boolean, true if it passes the filter.
                                             }
 
-                                            var tabledata = <?=json_encode( $tmp );?>;
+                                            var tabledata = <?php echo json_encode( $tmp );?>;
                                             var table = new Tabulator("#table_1", {
                                                 // height:"311px",
                                                 layout: "fitColumns",
@@ -167,7 +167,7 @@ if ( $tmp ) {
                                                 data: tabledata,
                                                 columns: [
                                                     {
-                                                        title: "<?=__( 'Name', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Name', QA_MAIN_DOMAIN );?>",
                                                         field: "supplier_edit_link",
                                                         formatter: "link", /*headerFilter: "input", headerFilterLiveFilter: true,*/
                                                         formatterParams: {
@@ -177,7 +177,7 @@ if ( $tmp ) {
                                                         }
                                                     },
                                                     {
-                                                        title: "<?=__( 'Created', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Created', QA_MAIN_DOMAIN );?>",
                                                         field: "dt_added",
                                                         hozAlign: "left",
                                                         sorter: "date",
@@ -190,7 +190,7 @@ if ( $tmp ) {
                                                         }
                                                     },
                                                     {
-                                                        title: "<?=__( 'Email', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Email', QA_MAIN_DOMAIN );?>",
                                                         field: "email_for_ordering",
                                                         headerFilter: "input",
                                                         formatter: "link",
@@ -201,7 +201,7 @@ if ( $tmp ) {
                                                         }
                                                     },
                                                     {
-                                                        title: "<?=__( 'Orders', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Orders', QA_MAIN_DOMAIN );?>",
                                                         field: "orders",
                                                         hozAlign: "left",
                                                         sorter: "number",
@@ -210,7 +210,7 @@ if ( $tmp ) {
                                                         headerFilterLiveFilter: false
                                                     },
                                                     {
-                                                        title: "<?=__( 'Completed Orders', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Completed Orders', QA_MAIN_DOMAIN );?>",
                                                         field: "total_orders",
                                                         hozAlign: "left",
                                                         sorter: "number",
@@ -219,13 +219,13 @@ if ( $tmp ) {
                                                         headerFilterLiveFilter: false
                                                     },
                                                     {
-                                                        title: "<?=__( 'Country / Region', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Country / Region', QA_MAIN_DOMAIN );?>",
                                                         field: "country",
                                                         headerFilter: "input",
                                                         headerFilterLiveFilter: true
                                                     },
                                                     {
-                                                        title: "<?=__( 'City', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'City', QA_MAIN_DOMAIN );?>",
                                                         field: "city",
                                                         headerFilter: "input",
                                                         headerFilterLiveFilter: true
@@ -261,7 +261,7 @@ if ( $tmp ) {
                         <div class="card" <?php if ( ! isset( $_GET['supplier_id'] ) && ! isset( $_GET['new'] ) ) { ?>style="display: none"<?php } ?>>
                             <div class="card-body">
                                 <div class="main-content-label mg-b-5">
-									<?php if ( ! isset( $_GET['supplier_id'] ) ) { ?>New<?php } ?><?= __( 'Supplier Details', QA_MAIN_DOMAIN ); ?>
+									<?php if ( ! isset( $_GET['supplier_id'] ) ) { ?>New<?php } ?><?php echo  __( 'Supplier Details', QA_MAIN_DOMAIN ); ?>
                                 </div>
                                 <p class="mg-b-20"></p>
                                 <div class="row">
@@ -303,51 +303,51 @@ if ( $tmp ) {
                                             <form method="post" action="">
                                                 <div class="row" id="js-add-new-supplier">
                                                     <div class="col-md-4 ">
-                                                        <label><?= __( 'Supplier Name', QA_MAIN_DOMAIN ); ?>*</label> <input type="text" class="form-control" name="supplier_name" required="required" value="<?= esc_attr( $supplier['supplier_name'] ); ?>" placeholder="Supplier Name*"/> <label><?= __( 'Supplier Code', QA_MAIN_DOMAIN ); ?>*</label>
-                                                        <input type="text" class="form-control" name="supplier_code" required="required" value="<?= esc_attr( $supplier['supplier_code'] ); ?>" placeholder="Supplier Code*"/>
-                                                        <label><?= __( 'TAX / VAT Number', QA_MAIN_DOMAIN ); ?></label>
-                                                        <input type="text" class="form-control" name="tax_vat_number" value="<?= esc_attr( $supplier['tax_vat_number'] ); ?>" placeholder="TAX / VAT Number"/>
-                                                        <label><?= __( 'Phone Number', QA_MAIN_DOMAIN ); ?></label>
-                                                        <input type="text" class="form-control" name="phone_number" value="<?= esc_attr( $supplier['phone_number'] ); ?>" placeholder="Phone Number"/>
-                                                        <label><?= __( 'Website', QA_MAIN_DOMAIN ); ?></label>
-                                                        <input type="text" class="form-control" name="website" value="<?= esc_attr( $supplier['website'] ); ?>" placeholder="Website"/>
-                                                        <label><?= __( 'Email for Ordering', QA_MAIN_DOMAIN ); ?>*</label>
-                                                        <input type="text" class="form-control" name="email_for_ordering" value="<?= esc_attr( $supplier['email_for_ordering'] ); ?>" placeholder="Email for Ordering*"/>
-                                                        <label><?= __( 'General Email Address', QA_MAIN_DOMAIN ); ?></label>
-                                                        <input type="text" class="form-control" name="general_email_address" value="<?= esc_attr( $supplier['general_email_address'] ); ?>" placeholder="General Email Address"/> <label><?= __( 'Description', QA_MAIN_DOMAIN ); ?></label>
-                                                        <textarea class="form-control" name="description" placeholder="Description"><?= esc_textarea( $supplier['description'] ); ?></textarea> <br>
+                                                        <label><?php echo  __( 'Supplier Name', QA_MAIN_DOMAIN ); ?>*</label> <input type="text" class="form-control" name="supplier_name" required="required" value="<?php echo  esc_attr( $supplier['supplier_name'] ); ?>" placeholder="Supplier Name*"/> <label><?php echo  __( 'Supplier Code', QA_MAIN_DOMAIN ); ?>*</label>
+                                                        <input type="text" class="form-control" name="supplier_code" required="required" value="<?php echo  esc_attr( $supplier['supplier_code'] ); ?>" placeholder="Supplier Code*"/>
+                                                        <label><?php echo  __( 'TAX / VAT Number', QA_MAIN_DOMAIN ); ?></label>
+                                                        <input type="text" class="form-control" name="tax_vat_number" value="<?php echo  esc_attr( $supplier['tax_vat_number'] ); ?>" placeholder="TAX / VAT Number"/>
+                                                        <label><?php echo  __( 'Phone Number', QA_MAIN_DOMAIN ); ?></label>
+                                                        <input type="text" class="form-control" name="phone_number" value="<?php echo  esc_attr( $supplier['phone_number'] ); ?>" placeholder="Phone Number"/>
+                                                        <label><?php echo  __( 'Website', QA_MAIN_DOMAIN ); ?></label>
+                                                        <input type="text" class="form-control" name="website" value="<?php echo  esc_attr( $supplier['website'] ); ?>" placeholder="Website"/>
+                                                        <label><?php echo  __( 'Email for Ordering', QA_MAIN_DOMAIN ); ?>*</label>
+                                                        <input type="text" class="form-control" name="email_for_ordering" value="<?php echo  esc_attr( $supplier['email_for_ordering'] ); ?>" placeholder="Email for Ordering*"/>
+                                                        <label><?php echo  __( 'General Email Address', QA_MAIN_DOMAIN ); ?></label>
+                                                        <input type="text" class="form-control" name="general_email_address" value="<?php echo  esc_attr( $supplier['general_email_address'] ); ?>" placeholder="General Email Address"/> <label><?php echo  __( 'Description', QA_MAIN_DOMAIN ); ?></label>
+                                                        <textarea class="form-control" name="description" placeholder="Description"><?php echo  esc_textarea( $supplier['description'] ); ?></textarea> <br>
                                                         <input type="submit" class="btn btn-success" value="<?php if ( ! isset( $_GET['supplier_id'] ) ) { ?>Add New Supplier<?php } else { ?>Save<?php } ?>"/>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label><?= __( 'Currency', QA_MAIN_DOMAIN ); ?>
-                                                        </label> <input type="text" class="form-control" name="currency" required="required" value="<?= esc_attr( $supplier['currency'] ); ?>" placeholder="Currency"/>
-                                                        <label><?= __( 'Address', QA_MAIN_DOMAIN ); ?>
-                                                        </label> <input type="text" class="form-control" name="address" value="<?= esc_attr( $supplier['address'] ); ?>" placeholder="Address"/>
-                                                        <label><?= __( 'City', QA_MAIN_DOMAIN ); ?>*</label> <input type="text" class="form-control" name="city" value="<?= esc_attr( $supplier['city'] ); ?>" placeholder="City*"/>
-                                                        <label><?= __( 'Country', QA_MAIN_DOMAIN ); ?>*</label>
-                                                        <input type="text" class="form-control" name="country" value="<?= esc_attr( $supplier['country'] ); ?>" placeholder="Country*"/>
-                                                        <label>State</label> <input type="text" class="form-control" name="state" value="<?= esc_attr( $supplier['state'] ); ?>" placeholder="State"/>
-                                                        <label><?= __( 'Zip Code', QA_MAIN_DOMAIN ); ?>
-                                                        </label> <input type="text" class="form-control" name="zip_code" value="<?= esc_attr( $supplier['zip_code'] ); ?>" placeholder="Zip Code"/>
-                                                        <label><?= __( 'Account Number', QA_MAIN_DOMAIN ); ?>
-                                                        </label> <input type="text" class="form-control" name="account_no" value="<?= esc_attr( $supplier['account_no'] ); ?>" placeholder="Account Number"/>
-                                                        <label><?= __( 'Account ID', QA_MAIN_DOMAIN ); ?>
-                                                        </label> <input type="text" class="form-control" name="account_id" value="<?= esc_attr( $supplier['account_id'] ); ?>" placeholder="Account ID"/>
+                                                        <label><?php echo  __( 'Currency', QA_MAIN_DOMAIN ); ?>
+                                                        </label> <input type="text" class="form-control" name="currency" required="required" value="<?php echo  esc_attr( $supplier['currency'] ); ?>" placeholder="Currency"/>
+                                                        <label><?php echo  __( 'Address', QA_MAIN_DOMAIN ); ?>
+                                                        </label> <input type="text" class="form-control" name="address" value="<?php echo  esc_attr( $supplier['address'] ); ?>" placeholder="Address"/>
+                                                        <label><?php echo  __( 'City', QA_MAIN_DOMAIN ); ?>*</label> <input type="text" class="form-control" name="city" value="<?php echo  esc_attr( $supplier['city'] ); ?>" placeholder="City*"/>
+                                                        <label><?php echo  __( 'Country', QA_MAIN_DOMAIN ); ?>*</label>
+                                                        <input type="text" class="form-control" name="country" value="<?php echo  esc_attr( $supplier['country'] ); ?>" placeholder="Country*"/>
+                                                        <label>State</label> <input type="text" class="form-control" name="state" value="<?php echo  esc_attr( $supplier['state'] ); ?>" placeholder="State"/>
+                                                        <label><?php echo  __( 'Zip Code', QA_MAIN_DOMAIN ); ?>
+                                                        </label> <input type="text" class="form-control" name="zip_code" value="<?php echo  esc_attr( $supplier['zip_code'] ); ?>" placeholder="Zip Code"/>
+                                                        <label><?php echo  __( 'Account Number', QA_MAIN_DOMAIN ); ?>
+                                                        </label> <input type="text" class="form-control" name="account_no" value="<?php echo  esc_attr( $supplier['account_no'] ); ?>" placeholder="Account Number"/>
+                                                        <label><?php echo  __( 'Account ID', QA_MAIN_DOMAIN ); ?>
+                                                        </label> <input type="text" class="form-control" name="account_id" value="<?php echo  esc_attr( $supplier['account_id'] ); ?>" placeholder="Account ID"/>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label><?= __( 'Assigned To', QA_MAIN_DOMAIN ); ?></label>
-                                                        <input type="text" class="form-control" name="assigned_to" required="required" value="<?= esc_attr( $supplier['assigned_to'] ); ?>" placeholder="Assigned To"/>
-                                                        <label><?= __( 'Ship To Location', QA_MAIN_DOMAIN ); ?></label>
-                                                        <input type="text" class="form-control" name="ship_to_location" value="<?= esc_attr( $supplier['ship_to_location'] ); ?>" placeholder="Ship To Location"/>
-                                                        <label><?= __( 'Discount', QA_MAIN_DOMAIN ); ?>
-                                                        </label> <input type="text" class="form-control" name="discount" value="<?= esc_attr( $supplier['discount'] ); ?>" placeholder="Discount"/>
-                                                        <label><?= __( 'Tax Rate', QA_MAIN_DOMAIN ); ?>
-                                                        </label> <input type="text" class="form-control" name="tax_rate" value="<?= esc_attr( $supplier['tax_rate'] ); ?>" placeholder="Tax Rate"/>
-                                                        <label><?= __( 'Lead Times (in weeks)', QA_MAIN_DOMAIN ); ?>*</label>
-                                                        <input type="text" class="form-control" name="lead_times" required="required" value="<?= esc_attr( $supplier['lead_times'] ); ?>" placeholder="Lead Times (in weeks) *"/> <label><?= __( 'Payment Terms', QA_MAIN_DOMAIN ); ?></label>
-                                                        <input type="text" class="form-control" name="payment_terms" value="<?= esc_attr( $supplier['payment_terms'] ); ?>" placeholder="Payment Terms"/>
-                                                        <label><?= __( 'Delivery Terms', QA_MAIN_DOMAIN ); ?></label>
-                                                        <input type="text" class="form-control" name="delivery_terms" value="<?= esc_attr( $supplier['delivery_terms'] ); ?>" placeholder="Delivery Terms"/>
+                                                        <label><?php echo  __( 'Assigned To', QA_MAIN_DOMAIN ); ?></label>
+                                                        <input type="text" class="form-control" name="assigned_to" required="required" value="<?php echo  esc_attr( $supplier['assigned_to'] ); ?>" placeholder="Assigned To"/>
+                                                        <label><?php echo  __( 'Ship To Location', QA_MAIN_DOMAIN ); ?></label>
+                                                        <input type="text" class="form-control" name="ship_to_location" value="<?php echo  esc_attr( $supplier['ship_to_location'] ); ?>" placeholder="Ship To Location"/>
+                                                        <label><?php echo  __( 'Discount', QA_MAIN_DOMAIN ); ?>
+                                                        </label> <input type="text" class="form-control" name="discount" value="<?php echo  esc_attr( $supplier['discount'] ); ?>" placeholder="Discount"/>
+                                                        <label><?php echo  __( 'Tax Rate', QA_MAIN_DOMAIN ); ?>
+                                                        </label> <input type="text" class="form-control" name="tax_rate" value="<?php echo  esc_attr( $supplier['tax_rate'] ); ?>" placeholder="Tax Rate"/>
+                                                        <label><?php echo  __( 'Lead Times (in weeks)', QA_MAIN_DOMAIN ); ?>*</label>
+                                                        <input type="text" class="form-control" name="lead_times" required="required" value="<?php echo  esc_attr( $supplier['lead_times'] ); ?>" placeholder="Lead Times (in weeks) *"/> <label><?php echo  __( 'Payment Terms', QA_MAIN_DOMAIN ); ?></label>
+                                                        <input type="text" class="form-control" name="payment_terms" value="<?php echo  esc_attr( $supplier['payment_terms'] ); ?>" placeholder="Payment Terms"/>
+                                                        <label><?php echo  __( 'Delivery Terms', QA_MAIN_DOMAIN ); ?></label>
+                                                        <input type="text" class="form-control" name="delivery_terms" value="<?php echo  esc_attr( $supplier['delivery_terms'] ); ?>" placeholder="Delivery Terms"/>
                                                     </div>
                                                 </div>
                                             </form>

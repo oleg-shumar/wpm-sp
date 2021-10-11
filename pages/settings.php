@@ -35,14 +35,14 @@ require_once __DIR__ . '/../' . 'header.php';
             <div class="page">
                 <!-- container opened -->
                 <div class="container">
-                    <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-                    <link href="<?= SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css" rel="stylesheet">
-                    <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/flat-ui.css">
-                    <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/common.css">
-                    <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-                    <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
-                    <script type="text/javascript" src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/tabulator.min.js"></script>
-                    <script type="text/javascript" src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/xlsx.full.min.js"></script>
+                    <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+                    <link href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css" rel="stylesheet">
+                    <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/flat-ui.css">
+                    <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/common.css">
+                    <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+                    <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+                    <script type="text/javascript" src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/tabulator.min.js"></script>
+                    <script type="text/javascript" src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/xlsx.full.min.js"></script>
                     <script>
                         function sp_switch_tabs(tab) {
                             const tabs_ids = [
@@ -69,95 +69,95 @@ require_once __DIR__ . '/../' . 'header.php';
                             font-size: inherit;
                         }
                     </style>
-                    <h4><?= __( 'Settings', QA_MAIN_DOMAIN ); ?></h4>
+                    <h4><?php echo  __( 'Settings', QA_MAIN_DOMAIN ); ?></h4>
                     <div class="card">
                         <div class="card-body">
-                            <h4><?= __( 'Please specify which industry your company belongs to.', QA_MAIN_DOMAIN ); ?>
+                            <h4><?php echo  __( 'Please specify which industry your company belongs to.', QA_MAIN_DOMAIN ); ?>
                             </h4>
                             <form method="post">
                                 <table style="width: 60%; margin: 3% 0">
                                     <tr>
                                         <td>
-											<?= sp_settings_get_checkbox( 'Fashion & Apparel' ); ?>
+											<?php echo  sp_settings_get_checkbox( 'Fashion & Apparel' ); ?>
                                         </td>
                                         <td>
-											<?= sp_settings_get_checkbox( 'Home & Kitchen' ); ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-											<?= sp_settings_get_checkbox( 'Sports & Outdoor' ); ?>
-                                        </td>
-                                        <td>
-											<?= sp_settings_get_checkbox( 'Consumer Electronics' ); ?>
+											<?php echo  sp_settings_get_checkbox( 'Home & Kitchen' ); ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-											<?= sp_settings_get_checkbox( 'Footwear' ); ?>
+											<?php echo  sp_settings_get_checkbox( 'Sports & Outdoor' ); ?>
                                         </td>
                                         <td>
-											<?= sp_settings_get_checkbox( 'Health & Household' ); ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-											<?= sp_settings_get_checkbox( 'Beauty & Personal Care' ); ?>
-                                        </td>
-                                        <td>
-											<?= sp_settings_get_checkbox( 'Toys & Games' ); ?>
+											<?php echo  sp_settings_get_checkbox( 'Consumer Electronics' ); ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-											<?= sp_settings_get_checkbox( 'Jewellery & Watches' ); ?>
+											<?php echo  sp_settings_get_checkbox( 'Footwear' ); ?>
                                         </td>
                                         <td>
-											<?= sp_settings_get_checkbox( 'Books & Magazines' ); ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-											<?= sp_settings_get_checkbox( 'Baby Wear' ); ?>
-                                        </td>
-                                        <td>
-											<?= sp_settings_get_checkbox( 'DIY & Gardening' ); ?>
+											<?php echo  sp_settings_get_checkbox( 'Health & Household' ); ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-											<?= sp_settings_get_checkbox( 'Optical' ); ?>
+											<?php echo  sp_settings_get_checkbox( 'Beauty & Personal Care' ); ?>
                                         </td>
                                         <td>
-											<?= sp_settings_get_checkbox( 'DIY & Gardening' ); ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-											<?= sp_settings_get_checkbox( 'Food & Drink' ); ?>
-                                        </td>
-                                        <td>
-											<?= sp_settings_get_checkbox( 'Pet Care' ); ?>
+											<?php echo  sp_settings_get_checkbox( 'Toys & Games' ); ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-											<?= sp_settings_get_checkbox( 'Furniture & Decoration' ); ?>
+											<?php echo  sp_settings_get_checkbox( 'Jewellery & Watches' ); ?>
+                                        </td>
+                                        <td>
+											<?php echo  sp_settings_get_checkbox( 'Books & Magazines' ); ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+											<?php echo  sp_settings_get_checkbox( 'Baby Wear' ); ?>
+                                        </td>
+                                        <td>
+											<?php echo  sp_settings_get_checkbox( 'DIY & Gardening' ); ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+											<?php echo  sp_settings_get_checkbox( 'Optical' ); ?>
+                                        </td>
+                                        <td>
+											<?php echo  sp_settings_get_checkbox( 'DIY & Gardening' ); ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+											<?php echo  sp_settings_get_checkbox( 'Food & Drink' ); ?>
+                                        </td>
+                                        <td>
+											<?php echo  sp_settings_get_checkbox( 'Pet Care' ); ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+											<?php echo  sp_settings_get_checkbox( 'Furniture & Decoration' ); ?>
                                         </td>
                                         <td></td>
                                     </tr>
                                 </table>
                                 <p class="mg-b-20"></p>
-                                <h4 style="margin-bottom: 1em"><?= __( 'Please specify your business model and how you sell your products.', QA_MAIN_DOMAIN ); ?></h4>
-                                <p><?= sp_settings_get_radio_1( 'A', 'Retail - my site sells directly to consumers' ); ?></p>
-                                <p><?= sp_settings_get_radio_1( 'B', 'Wholesale – my site sells business to business' ); ?></p>
-                                <p><?= sp_settings_get_radio_1( 'C', 'Multichannel – my site sells to both end consumers as well as business to business' ); ?></p>
+                                <h4 style="margin-bottom: 1em"><?php echo  __( 'Please specify your business model and how you sell your products.', QA_MAIN_DOMAIN ); ?></h4>
+                                <p><?php echo  sp_settings_get_radio_1( 'A', 'Retail - my site sells directly to consumers' ); ?></p>
+                                <p><?php echo  sp_settings_get_radio_1( 'B', 'Wholesale – my site sells business to business' ); ?></p>
+                                <p><?php echo  sp_settings_get_radio_1( 'C', 'Multichannel – my site sells to both end consumers as well as business to business' ); ?></p>
                                 <p class="mg-b-20"></p>
-                                <h4 style="margin: 1em 0"><?= __( 'Please specify the breath of your store.', QA_MAIN_DOMAIN ); ?></h4>
-                                <p><?= sp_settings_get_radio_2( 'A', 'my store has less than 250 products' ); ?></p>
-                                <p><?= sp_settings_get_radio_2( 'B', 'my store has between 250 and 1000 products' ); ?></p>
-                                <p><?= sp_settings_get_radio_2( 'C', 'my store has more than 1000 products' ); ?></p>
-                                <input style="margin-top: 2em" type="submit" class="btn btn-sm btn-success" value="<?= __( 'Save Settings', QA_MAIN_DOMAIN ); ?>" name="save-store-settings"/>
+                                <h4 style="margin: 1em 0"><?php echo  __( 'Please specify the breath of your store.', QA_MAIN_DOMAIN ); ?></h4>
+                                <p><?php echo  sp_settings_get_radio_2( 'A', 'my store has less than 250 products' ); ?></p>
+                                <p><?php echo  sp_settings_get_radio_2( 'B', 'my store has between 250 and 1000 products' ); ?></p>
+                                <p><?php echo  sp_settings_get_radio_2( 'C', 'my store has more than 1000 products' ); ?></p>
+                                <input style="margin-top: 2em" type="submit" class="btn btn-sm btn-success" value="<?php echo  __( 'Save Settings', QA_MAIN_DOMAIN ); ?>" name="save-store-settings"/>
                             </form>
                         </div>
                     </div>

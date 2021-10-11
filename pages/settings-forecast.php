@@ -37,14 +37,14 @@ require_once __DIR__ . '/../' . 'header.php';
             <div class="page">
                 <!-- container opened -->
                 <div class="container">
-                    <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-                    <link href="<?= SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css" rel="stylesheet">
-                    <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/flat-ui.css">
-                    <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/common.css">
-                    <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-                    <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
-                    <script type="text/javascript" src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/tabulator.min.js"></script>
-                    <script type="text/javascript" src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/xlsx.full.min.js"></script>
+                    <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+                    <link href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css" rel="stylesheet">
+                    <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/flat-ui.css">
+                    <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/common.css">
+                    <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+                    <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+                    <script type="text/javascript" src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/tabulator.min.js"></script>
+                    <script type="text/javascript" src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/xlsx.full.min.js"></script>
                     <style>
                         .sp-settings-form p {
                             margin-top: 3%;
@@ -59,32 +59,32 @@ require_once __DIR__ . '/../' . 'header.php';
                             padding-bottom: 2em;
                         }
                     </style>
-                    <h4><?= __( 'Settings', QA_MAIN_DOMAIN ); ?></h4>
+                    <h4><?php echo  __( 'Settings', QA_MAIN_DOMAIN ); ?></h4>
                     <div class="card">
                         <div class="card-body">
-                            <h4><?= __( 'Forecast Settings', QA_MAIN_DOMAIN ); ?></h4>
+                            <h4><?php echo  __( 'Forecast Settings', QA_MAIN_DOMAIN ); ?></h4>
                             <p class="mg-b-20"></p>
                             <form method="post">
                                 <table class="sp-settings-forecast-table">
                                     <tr>
-                                        <td style="width: 60%;"><?= __( 'Default Weeks of Stock', QA_MAIN_DOMAIN ); ?>
+                                        <td style="width: 60%;"><?php echo  __( 'Default Weeks of Stock', QA_MAIN_DOMAIN ); ?>
                                         </td>
                                         <td>
-                                            <input type="number" name="default-weeks-of-stock" value="<?= esc_attr( get_option( 'sp.settings.default_weeks_of_stock', 6 ) ) ?>"/>
+                                            <input type="number" name="default-weeks-of-stock" value="<?php echo  esc_attr( get_option( 'sp.settings.default_weeks_of_stock', 6 ) ) ?>"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><?= __( 'Default Lead Time', QA_MAIN_DOMAIN ); ?></td>
+                                        <td><?php echo  __( 'Default Lead Time', QA_MAIN_DOMAIN ); ?></td>
                                         <td>
-                                            <input type="number" name="default-lead-time" value="<?= esc_attr( get_option( 'sp.settings.default_lead_time', 1 ) ) ?>"/>
+                                            <input type="number" name="default-lead-time" value="<?php echo  esc_attr( get_option( 'sp.settings.default_lead_time', 1 ) ) ?>"/>
                                         </td>
                                     </tr>
                                 </table>
                                 <p class="mg-b-20"></p>
                                 <p style="font-size: inherit"><input type="checkbox" id="id-force-zero-price-products" name="force_zero_price_products"
-										<?= ( get_option( 'sp.settings.force_zero_price_products', true ) ? ' checked="checked"' : '' ) ?>> <label for="id-force-zero-price-products" style="font-weight: normal"> <?= __( 'Add Force include products with zero cost price?', QA_MAIN_DOMAIN ) ?></label></p>
+										<?php echo  ( get_option( 'sp.settings.force_zero_price_products', true ) ? ' checked="checked"' : '' ) ?>> <label for="id-force-zero-price-products" style="font-weight: normal"> <?php echo  __( 'Add Force include products with zero cost price?', QA_MAIN_DOMAIN ) ?></label></p>
                                 <p class="mg-b-20"></p>
-                                <input style="margin-top: 2em" type="submit" class="btn btn-sm btn-success" value="<?= __( 'Save Settings', QA_MAIN_DOMAIN ); ?>" name="save-forecast-settings"/>
+                                <input style="margin-top: 2em" type="submit" class="btn btn-sm btn-success" value="<?php echo  __( 'Save Settings', QA_MAIN_DOMAIN ); ?>" name="save-forecast-settings"/>
                             </form>
                         </div>
                     </div>

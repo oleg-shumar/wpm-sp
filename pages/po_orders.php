@@ -89,18 +89,18 @@ $json_orders    = json_encode( array_values( $purchase_orders ) );
                 <div class="page">
                     <!-- container opened -->
                     <div class="container">
-                        <h4><?= __( 'Purchase Orders', QA_MAIN_DOMAIN ); ?></h4>
+                        <h4><?php echo  __( 'Purchase Orders', QA_MAIN_DOMAIN ); ?></h4>
                         <!-- <editor-fold desc="includes"> -->
-                        <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-                        <link href="<?= SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css" rel="stylesheet">
-                        <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/flat-ui.css">
-                        <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/common.css">
-                        <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-                        <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
-                        <script type="text/javascript" src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/tabulator.min.js"></script>
-                        <script type="text/javascript" src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/xlsx.full.min.js"></script>
-                        <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/charts/chart.min.js"></script>
-                        <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/charts/utils.js"></script>
+                        <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+                        <link href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css" rel="stylesheet">
+                        <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/flat-ui.css">
+                        <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/common.css">
+                        <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+                        <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+                        <script type="text/javascript" src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/tabulator.min.js"></script>
+                        <script type="text/javascript" src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/xlsx.full.min.js"></script>
+                        <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/charts/chart.min.js"></script>
+                        <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/charts/utils.js"></script>
                         <!-- </editor-fold> -->
                         <script>
                             function productSelected() {
@@ -133,23 +133,23 @@ $json_orders    = json_encode( array_values( $purchase_orders ) );
                         <div class="card">
                             <div class="card-body">
                                 <div class="main-content-label mg-b-5">
-									<?= __( 'Orders History', QA_MAIN_DOMAIN ); ?>
+									<?php echo  __( 'Orders History', QA_MAIN_DOMAIN ); ?>
                                 </div>
                                 <p class="mg-b-20"></p>
                                 <div class="row">
                                     <div class="col-md-12 col">
                                         <nav class="nav nav-pills" style="margin-bottom: 1em">
-                                            <a class="nav-link active" id="group-0" href="#" onclick="return setOrders(0)"><?= __( 'All', QA_MAIN_DOMAIN ); ?>
-                                                (<?= esc_html( $total_po_count ); ?>)</a> <a class="nav-link " id="group-1" href="#" onclick="return setOrders(<?= 1 || $statuses['On Order'] > 0 ? 1 : 'false'; ?>, 'On Order')"><?= __( 'On Order', QA_MAIN_DOMAIN ); ?>
-                                                (<?= esc_html( $statuses['On Order'] ); ?>) </a> <a class="nav-link " id="group-2" href="#" onclick="return setOrders(<?= 1 || $statuses['On Hold'] > 0 ? 2 : 'false'; ?>, 'On Hold')"><?= __( 'On Hold', QA_MAIN_DOMAIN ); ?>
-                                                (<?= esc_html( $statuses['On Hold'] ); ?>) </a> <a class="nav-link " id="group-3" href="#" onclick="return setOrders(<?= 1 || $statuses['Completed'] > 0 ? 3 : 'false'; ?>, 'Completed')"><?= __( 'Completed', QA_MAIN_DOMAIN ); ?>
-                                                (<?= esc_html( $statuses['Completed'] ); ?>)</a> <a class="nav-link " id="group-4" href="#" onclick="return setOrders(<?= 1 || $statuses['Cancelled'] > 0 ? 4 : 'false'; ?>, 'Cancelled')"><?= __( 'Cancelled', QA_MAIN_DOMAIN ); ?>
-                                                (<?= esc_html( $statuses['Cancelled'] ); ?>)</a> <a class="nav-link " id="group-5" href="#" onclick="return setOrders(<?= 1 || $statuses['Failed'] > 0 ? 5 : 'false'; ?>, 'Failed')"><?= __( 'Failed', QA_MAIN_DOMAIN ); ?>
-                                                (<?= esc_html( $statuses['Failed'] ); ?>)</a>
+                                            <a class="nav-link active" id="group-0" href="#" onclick="return setOrders(0)"><?php echo  __( 'All', QA_MAIN_DOMAIN ); ?>
+                                                (<?php echo  esc_html( $total_po_count ); ?>)</a> <a class="nav-link " id="group-1" href="#" onclick="return setOrders(<?php echo  1 || $statuses['On Order'] > 0 ? 1 : 'false'; ?>, 'On Order')"><?php echo  __( 'On Order', QA_MAIN_DOMAIN ); ?>
+                                                (<?php echo  esc_html( $statuses['On Order'] ); ?>) </a> <a class="nav-link " id="group-2" href="#" onclick="return setOrders(<?php echo  1 || $statuses['On Hold'] > 0 ? 2 : 'false'; ?>, 'On Hold')"><?php echo  __( 'On Hold', QA_MAIN_DOMAIN ); ?>
+                                                (<?php echo  esc_html( $statuses['On Hold'] ); ?>) </a> <a class="nav-link " id="group-3" href="#" onclick="return setOrders(<?php echo  1 || $statuses['Completed'] > 0 ? 3 : 'false'; ?>, 'Completed')"><?php echo  __( 'Completed', QA_MAIN_DOMAIN ); ?>
+                                                (<?php echo  esc_html( $statuses['Completed'] ); ?>)</a> <a class="nav-link " id="group-4" href="#" onclick="return setOrders(<?php echo  1 || $statuses['Cancelled'] > 0 ? 4 : 'false'; ?>, 'Cancelled')"><?php echo  __( 'Cancelled', QA_MAIN_DOMAIN ); ?>
+                                                (<?php echo  esc_html( $statuses['Cancelled'] ); ?>)</a> <a class="nav-link " id="group-5" href="#" onclick="return setOrders(<?php echo  1 || $statuses['Failed'] > 0 ? 5 : 'false'; ?>, 'Failed')"><?php echo  __( 'Failed', QA_MAIN_DOMAIN ); ?>
+                                                (<?php echo  esc_html( $statuses['Failed'] ); ?>)</a>
                                         </nav>
                                         <div id="table-data"></div>
                                         <script>
-                                            let table_data = <?=$json_orders;?>;
+                                            let table_data = <?php echo $json_orders;?>;
 
                                             //Build Tabulator
                                             // region tabulator columns
@@ -170,12 +170,12 @@ $json_orders    = json_encode( array_values( $purchase_orders ) );
                                                     hozAlign: "left"
                                                 },
                                                 {
-                                                    title: "<?=__( 'Purchase Order', QA_MAIN_DOMAIN );?>",
+                                                    title: "<?php echo __( 'Purchase Order', QA_MAIN_DOMAIN );?>",
                                                     field: "po",
                                                     width: 150
                                                 },
                                                 {
-                                                    title: "<?=__( 'Created', QA_MAIN_DOMAIN );?>",
+                                                    title: "<?php echo __( 'Created', QA_MAIN_DOMAIN );?>",
                                                     field: "dt",
                                                     hozAlign: "left",
                                                     sorter: "date",
@@ -187,38 +187,38 @@ $json_orders    = json_encode( array_values( $purchase_orders ) );
                                                     }
                                                 },
                                                 {
-                                                    title: "<?=__( 'Status', QA_MAIN_DOMAIN );?>",
+                                                    title: "<?php echo __( 'Status', QA_MAIN_DOMAIN );?>",
                                                     field: "status",
                                                     width: 100
                                                 },
                                                 {
-                                                    title: "<?=__( 'Supplier', QA_MAIN_DOMAIN );?>",
+                                                    title: "<?php echo __( 'Supplier', QA_MAIN_DOMAIN );?>",
                                                     field: "supplier",
                                                     hozAlign: "left",
                                                     width: 100
                                                 },
                                                 {
-                                                    title: "<?=__( 'Product Name', QA_MAIN_DOMAIN );?>",
+                                                    title: "<?php echo __( 'Product Name', QA_MAIN_DOMAIN );?>",
                                                     field: "p_name",
                                                     hozAlign: "left",
                                                     width: 100
                                                 },
                                                 {
-                                                    title: "<?=__( 'Quantity', QA_MAIN_DOMAIN );?>",
+                                                    title: "<?php echo __( 'Quantity', QA_MAIN_DOMAIN );?>",
                                                     field: "quantity"
                                                 },
                                                 {
-                                                    title: "<?=__( 'Order Value', QA_MAIN_DOMAIN );?>", field:
+                                                    title: "<?php echo __( 'Order Value', QA_MAIN_DOMAIN );?>", field:
                                                         "order_value"
                                                 },
                                                 {
-                                                    title: "<?=__( 'Ship To', QA_MAIN_DOMAIN );?>",
+                                                    title: "<?php echo __( 'Ship To', QA_MAIN_DOMAIN );?>",
                                                     field: "ship_to",
                                                     hozAlign: "center",
                                                     sorter: "date"
                                                 },
                                                 {
-                                                    title: "<?=__( 'Days, Expected Delivery', QA_MAIN_DOMAIN );?>",
+                                                    title: "<?php echo __( 'Days, Expected Delivery', QA_MAIN_DOMAIN );?>",
                                                     field: "expected_delivery_days",
                                                     hozAlign: "center",
                                                     width: 100
@@ -279,12 +279,12 @@ $json_orders    = json_encode( array_values( $purchase_orders ) );
                                         </style>
                                         <div>
                                             <select id="bulk_status" name="bulk_status">
-                                                <option value="On Order"><?= __( 'On Order', QA_MAIN_DOMAIN ); ?></option>
-                                                <option value="On Hold"><?= __( 'On Hold', QA_MAIN_DOMAIN ); ?></option>
-                                                <option value="Completed"><?= __( 'Completed', QA_MAIN_DOMAIN ); ?></option>
-                                                <option value="Cancelled"><?= __( 'Cancelled', QA_MAIN_DOMAIN ); ?></option>
-                                                <option value="Failed"><?= __( 'Failed', QA_MAIN_DOMAIN ); ?></option>
-                                            </select> <input type="button" onclick="bulkStatusUpdate();" value="<?= __( 'Update Status', QA_MAIN_DOMAIN ); ?>" class="btn btn-sm btn-success"/>
+                                                <option value="On Order"><?php echo  __( 'On Order', QA_MAIN_DOMAIN ); ?></option>
+                                                <option value="On Hold"><?php echo  __( 'On Hold', QA_MAIN_DOMAIN ); ?></option>
+                                                <option value="Completed"><?php echo  __( 'Completed', QA_MAIN_DOMAIN ); ?></option>
+                                                <option value="Cancelled"><?php echo  __( 'Cancelled', QA_MAIN_DOMAIN ); ?></option>
+                                                <option value="Failed"><?php echo  __( 'Failed', QA_MAIN_DOMAIN ); ?></option>
+                                            </select> <input type="button" onclick="bulkStatusUpdate();" value="<?php echo  __( 'Update Status', QA_MAIN_DOMAIN ); ?>" class="btn btn-sm btn-success"/>
                                         </div>
                                     </div>
                                 </div>

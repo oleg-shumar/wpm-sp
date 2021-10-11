@@ -103,7 +103,7 @@
 </style>
 <div class="wizard-placeholder">
     <div class="wizard-step-container">
-		<?= __( 'Let\'s get to know each other', QA_MAIN_DOMAIN ); ?>
-		<?= SPHD_Wizard::show_steps(); ?>
+		<?php echo  __( 'Let\'s get to know each other', QA_MAIN_DOMAIN ); ?>
+		<?php echo  SPHD_Wizard::show_steps(); ?>
     </div>
     <div id="id-wizard-answers">

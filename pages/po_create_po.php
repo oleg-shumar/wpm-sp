@@ -151,16 +151,16 @@ require_once __DIR__ . '/../' . 'header.php'; ?>
                     <!-- container opened -->
                     <div class="container">
                         <!-- <editor-fold desc="includes"> -->
-                        <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-                        <link href="<?= SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css" rel="stylesheet">
-                        <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/flat-ui.css">
-                        <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/common.css">
-                        <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-                        <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
-                        <script type="text/javascript" src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/tabulator.min.js"></script>
-                        <script type="text/javascript" src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/xlsx.full.min.js"></script>
-                        <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/charts/chart.min.js"></script>
-                        <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/charts/utils.js"></script>
+                        <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+                        <link href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css" rel="stylesheet">
+                        <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/flat-ui.css">
+                        <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/common.css">
+                        <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+                        <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+                        <script type="text/javascript" src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/tabulator.min.js"></script>
+                        <script type="text/javascript" src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/xlsx.full.min.js"></script>
+                        <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/charts/chart.min.js"></script>
+                        <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/charts/utils.js"></script>
                         <!--</editor-fold>-->
 						<?php
 						if ( $pre_pdf ) {
@@ -175,22 +175,22 @@ require_once __DIR__ . '/../' . 'header.php'; ?>
 							echo $html;
 						} else {
 						?>
-                        <h4><?= __( 'Purchase Orders', QA_MAIN_DOMAIN ); ?></h4>
+                        <h4><?php echo  __( 'Purchase Orders', QA_MAIN_DOMAIN ); ?></h4>
                         <div class="card">
                             <div class="card-body">
                                 <div class="main-content-label mg-b-5" style="margin-left: -15px;">
-									<?= __( 'Create Purchase Order', QA_MAIN_DOMAIN ); ?>
+									<?php echo  __( 'Create Purchase Order', QA_MAIN_DOMAIN ); ?>
                                 </div>
                                 <p class="mg-b-20"></p>
                                 <div class="row">
                                     <div>
-                                        <p><?= __( 'Please select supplier to create Purchase Order with multiple items.', QA_MAIN_DOMAIN ); ?></p>
+                                        <p><?php echo  __( 'Please select supplier to create Purchase Order with multiple items.', QA_MAIN_DOMAIN ); ?></p>
                                         <select id="id-po-search-input" style="max-height: 31px;">
 											<?php foreach ( QAMain_Core::get_suppliers() as $tmp_supplier ) { ?>
-                                                <option value="<?= esc_attr( $tmp_supplier['supplier_name'] ); ?>" <?= ( isset( $_GET['supplier'] ) && $_GET['supplier'] == $tmp_supplier['supplier_name'] ) ? 'selected' : ''; ?>><?= esc_html( $tmp_supplier['supplier_name'] ); ?></option>
+                                                <option value="<?php echo  esc_attr( $tmp_supplier['supplier_name'] ); ?>" <?php echo  ( isset( $_GET['supplier'] ) && $_GET['supplier'] == $tmp_supplier['supplier_name'] ) ? 'selected' : ''; ?>><?php echo  esc_html( $tmp_supplier['supplier_name'] ); ?></option>
 											<?php } ?>
                                         </select>
-                                        <button class="btn btn-sm btn-info" style="margin-top: 1px;max-height: 30px;" onclick="search_supplier(); return false"><?= __( 'Search', QA_MAIN_DOMAIN ); ?></button>
+                                        <button class="btn btn-sm btn-info" style="margin-top: 1px;max-height: 30px;" onclick="search_supplier(); return false"><?php echo  __( 'Search', QA_MAIN_DOMAIN ); ?></button>
                                     </div>
                                     <p class="mg-b-20"></p>
                                     <div class="row">
@@ -200,7 +200,7 @@ require_once __DIR__ . '/../' . 'header.php'; ?>
                                             <div style="margin-top: 24px">
 												<?php if ( ! $show_form ): ?>
                                                     <form id="id-create-po-form" method="post">
-                                                        <input type="hidden" name="po-data" id="id-po-data" value=""> <input type="button" onclick="create_po(); return false;" class="btn btn-success" value="<?= __( 'Create PO', QA_MAIN_DOMAIN ); ?>"/>
+                                                        <input type="hidden" name="po-data" id="id-po-data" value=""> <input type="button" onclick="create_po(); return false;" class="btn btn-success" value="<?php echo  __( 'Create PO', QA_MAIN_DOMAIN ); ?>"/>
                                                     </form>
 												<?php endif; ?>
                                             </div>
@@ -211,53 +211,53 @@ require_once __DIR__ . '/../' . 'header.php'; ?>
                                     <form style="max-width: 900px" method="post">
 										<?php
 										foreach ( $po_data as $product_id => $each_item ): ?>
-                                            <input type="hidden" name="product-qtys[<?= (int) $product_id ?>]" value="<?= (int) $each_item['qty'] ?>"><input type="hidden" name="product-prices[<?= (int) $product_id ?>]" value="<?= esc_attr( $each_item['cost_price'] ) ?>"><input type="hidden" name="product-names[<?= (int) $product_id ?>]" value="<?= esc_attr( $each_item['name'] ) ?>">
+                                            <input type="hidden" name="product-qtys[<?php echo  (int) $product_id ?>]" value="<?php echo  (int) $each_item['qty'] ?>"><input type="hidden" name="product-prices[<?php echo  (int) $product_id ?>]" value="<?php echo  esc_attr( $each_item['cost_price'] ) ?>"><input type="hidden" name="product-names[<?php echo  (int) $product_id ?>]" value="<?php echo  esc_attr( $each_item['name'] ) ?>">
 										<?php endforeach ?>
-                                        <input type="hidden" name="supplier_id" value="<?= (int) $each_item['supplier_id'] ?>"> <input type="hidden" name="supplier_name" value="<?= esc_attr( $each_item['supplier_name'] ) ?>"> <input type="hidden" name="supplier_address" value="<?= esc_attr( $each_item['supplier_address'] ) ?>"> <input type="hidden" name="payment_terms" value="<?= esc_attr( $each_item['payment_terms'] ) ?>"> <input type="hidden" name="delivery_terms" value="<?= esc_attr( $each_item['delivery_terms'] ) ?>"> <input type="hidden" name="vendor_no" value="<?= esc_attr( $each_item['vendor_no'] ) ?>"> <input type="hidden" name="vendor_vat" value="<?= esc_attr( $each_item['vendor_vat'] ) ?>"> <input type="hidden" name="account_no" value="<?= esc_attr( $each_item['account_no'] ) ?>"> <input type="hidden" name="account_id" value="<?= esc_attr( $each_item['account_id'] ) ?>"> <input type="hidden" name="assigned_to" value="<?= esc_attr( $each_item['assigned_to'] ) ?>">
+                                        <input type="hidden" name="supplier_id" value="<?php echo  (int) $each_item['supplier_id'] ?>"> <input type="hidden" name="supplier_name" value="<?php echo  esc_attr( $each_item['supplier_name'] ) ?>"> <input type="hidden" name="supplier_address" value="<?php echo  esc_attr( $each_item['supplier_address'] ) ?>"> <input type="hidden" name="payment_terms" value="<?php echo  esc_attr( $each_item['payment_terms'] ) ?>"> <input type="hidden" name="delivery_terms" value="<?php echo  esc_attr( $each_item['delivery_terms'] ) ?>"> <input type="hidden" name="vendor_no" value="<?php echo  esc_attr( $each_item['vendor_no'] ) ?>"> <input type="hidden" name="vendor_vat" value="<?php echo  esc_attr( $each_item['vendor_vat'] ) ?>"> <input type="hidden" name="account_no" value="<?php echo  esc_attr( $each_item['account_no'] ) ?>"> <input type="hidden" name="account_id" value="<?php echo  esc_attr( $each_item['account_id'] ) ?>"> <input type="hidden" name="assigned_to" value="<?php echo  esc_attr( $each_item['assigned_to'] ) ?>">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <label><?= __( 'Deliver To:', QA_MAIN_DOMAIN ); ?></label>&nbsp;&nbsp;&nbsp;
+                                                <label><?php echo  __( 'Deliver To:', QA_MAIN_DOMAIN ); ?></label>&nbsp;&nbsp;&nbsp;
                                             </div>
                                             <div class="col-md-2">
-                                                <label for="r1"><?= __( 'Warehouse', QA_MAIN_DOMAIN ); ?></label> <input type="radio" name="deliver_to" id="r1" value="warehouse" class="form-control" checked/>
+                                                <label for="r1"><?php echo  __( 'Warehouse', QA_MAIN_DOMAIN ); ?></label> <input type="radio" name="deliver_to" id="r1" value="warehouse" class="form-control" checked/>
                                             </div>
                                             <div class="col-md-2">
-                                                <label disabled="disabled" for="r2"><?= __( 'Customer', QA_MAIN_DOMAIN ); ?></label> <input disabled="disabled" type="radio" name="deliver_to" id="r2" value="customer" class="form-control"/>
+                                                <label disabled="disabled" for="r2"><?php echo  __( 'Customer', QA_MAIN_DOMAIN ); ?></label> <input disabled="disabled" type="radio" name="deliver_to" id="r2" value="customer" class="form-control"/>
                                             </div>
                                             <div class="col-md-3">
                                                 <select name="warehouse_id" class="form-control">
 													<?php foreach ( $warehouses as $warehouse ) { ?>
-                                                        <option value="<?= (int) $warehouse['id'] ?>"><?= esc_html( $warehouse['warehouse_name'] ) ?></option>
+                                                        <option value="<?php echo  (int) $warehouse['id'] ?>"><?php echo  esc_html( $warehouse['warehouse_name'] ) ?></option>
 													<?php } ?>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label><?= __( 'Purchase Order #', QA_MAIN_DOMAIN ) ?></label> <input required="required" type="text" class="form-control" placeholder="Purchase Order #" name="purchase_order_num" value="<?= esc_attr( get_option( 'sp.settings.po_prefix', 'PO-' ) ) ?><?= sp_get_next_po() ?>"/>
+                                                <label><?php echo  __( 'Purchase Order #', QA_MAIN_DOMAIN ) ?></label> <input required="required" type="text" class="form-control" placeholder="Purchase Order #" name="purchase_order_num" value="<?php echo  esc_attr( get_option( 'sp.settings.po_prefix', 'PO-' ) ) ?><?php echo  sp_get_next_po() ?>"/>
                                             </div>
                                             <div class="col-md-3">
-                                                <label><?= __( 'Reference Number #', QA_MAIN_DOMAIN ); ?></label> <input required="required" type="text" class="form-control" name="reference_number" readonly="readonly" placeholder="Reference Number #" value="RN-<?= esc_attr( sp_get_next_rn() ) ?>"/>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label><?= __( 'Order Date', QA_MAIN_DOMAIN ); ?>
-                                                </label> <input required="required" type="date" class="form-control" name="order_date" value="<?= date( 'Y-m-d' ) ?>"/>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <label><?= __( 'Expected Delivery Date', QA_MAIN_DOMAIN ); ?></label> <input required="required" type="date" class="form-control" name="expected_delivery_date" value="<?= date( 'Y-m-d', $form_lead_time ) ?>"/>
+                                                <label><?php echo  __( 'Reference Number #', QA_MAIN_DOMAIN ); ?></label> <input required="required" type="text" class="form-control" name="reference_number" readonly="readonly" placeholder="Reference Number #" value="RN-<?php echo  esc_attr( sp_get_next_rn() ) ?>"/>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label><?= __( 'Description', QA_MAIN_DOMAIN ); ?>
+                                                <label><?php echo  __( 'Order Date', QA_MAIN_DOMAIN ); ?>
+                                                </label> <input required="required" type="date" class="form-control" name="order_date" value="<?php echo  date( 'Y-m-d' ) ?>"/>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label><?php echo  __( 'Expected Delivery Date', QA_MAIN_DOMAIN ); ?></label> <input required="required" type="date" class="form-control" name="expected_delivery_date" value="<?php echo  date( 'Y-m-d', $form_lead_time ) ?>"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label><?php echo  __( 'Description', QA_MAIN_DOMAIN ); ?>
                                                 </label> <textarea name="description" rows="3"></textarea>
                                             </div>
                                         </div>
                                         <div class="row" style="margin-top: 24px">
                                             <div class="col-md-3">
-                                                <input type="submit" class="btn btn-success" name="do-create-purchase-order" value="<?= __( 'Create Purchase Order', QA_MAIN_DOMAIN ); ?>"/>
+                                                <input type="submit" class="btn btn-success" name="do-create-purchase-order" value="<?php echo  __( 'Create Purchase Order', QA_MAIN_DOMAIN ); ?>"/>
                                             </div>
                                         </div>
                                     </form>
@@ -342,15 +342,15 @@ require_once __DIR__ . '/../' . 'header.php'; ?>
         }
 
 		<?php if ($show_form): ?>
-        const qtydata2 = <?=json_encode( $js_po_data )?>;
+        const qtydata2 = <?php echo json_encode( $js_po_data )?>;
 		<?php endif;?>
-        const tabledata2 = <?=json_encode( array_values( $products_data ) )?>;
-        const po_checkbox_show = <?= esc_js( $js_show_po_checkbox ) ?>;
+        const tabledata2 = <?php echo json_encode( array_values( $products_data ) )?>;
+        const po_checkbox_show = <?php echo  esc_js( $js_show_po_checkbox ) ?>;
 
         let table2 = new Tabulator("#table_2", {
             layout: "fitColumns",
             responsiveLayout: "collapse",
-            placeholder: "<?= __( 'No products associated with selected supplier', QA_MAIN_DOMAIN )?>",
+            placeholder: "<?php echo  __( 'No products associated with selected supplier', QA_MAIN_DOMAIN )?>",
             data: tabledata2,
             pagination: "local",
             paginationSize: 50,
@@ -367,7 +367,7 @@ require_once __DIR__ . '/../' . 'header.php'; ?>
                     width: 30,
                     formatter: function (cell, formatterParams, onRendered) {
                         return po_checkbox_show
-                            ? '<input type="checkbox" class="select-row" style="vertical-align: middle" <?= $show_form ? 'checked="checked" disabled="disabled" ' : '' ?>'
+                            ? '<input type="checkbox" class="select-row" style="vertical-align: middle" <?php echo  $show_form ? 'checked="checked" disabled="disabled" ' : '' ?>'
                             + 'onchange="product_selected(this,' + cell.getData().term_id
                             + '); return false" >' : '';
                     },
@@ -383,7 +383,7 @@ require_once __DIR__ . '/../' . 'header.php'; ?>
                     width: 50
                 },
                 {
-                    title: "<?=__( 'Product Name', QA_MAIN_DOMAIN );?>",
+                    title: "<?php echo __( 'Product Name', QA_MAIN_DOMAIN );?>",
                     field: "name",
                     headerFilter: "input",
                     formatter: "link",
@@ -395,7 +395,7 @@ require_once __DIR__ . '/../' . 'header.php'; ?>
                     }
                 },
                 {
-                    title: "<?=__( 'Supplier Name', QA_MAIN_DOMAIN );?>",
+                    title: "<?php echo __( 'Supplier Name', QA_MAIN_DOMAIN );?>",
                     field: "supplier_name",
                     headerFilter: "input",
                     formatter: function (cell, formatterParams, onRendered) {
@@ -407,7 +407,7 @@ require_once __DIR__ . '/../' . 'header.php'; ?>
                     },
                 },
                 {
-                    title: "<?=__( 'Ideal Stock', QA_MAIN_DOMAIN );?>",
+                    title: "<?php echo __( 'Ideal Stock', QA_MAIN_DOMAIN );?>",
                     field: "ideal_stock",
                     hozAlign: "center",
                     sorter: "number",
@@ -416,7 +416,7 @@ require_once __DIR__ . '/../' . 'header.php'; ?>
                     headerFilterLiveFilter: false
                 },
                 {
-                    title: "<?=__( 'Current Stock', QA_MAIN_DOMAIN );?>",
+                    title: "<?php echo __( 'Current Stock', QA_MAIN_DOMAIN );?>",
                     field: "current_stock",
                     hozAlign: "center",
                     sorter: "number",
@@ -425,7 +425,7 @@ require_once __DIR__ . '/../' . 'header.php'; ?>
                     headerFilterLiveFilter: false
                 },
                 {
-                    title: "<?=__( 'Inbound Stock', QA_MAIN_DOMAIN );?>",
+                    title: "<?php echo __( 'Inbound Stock', QA_MAIN_DOMAIN );?>",
                     field: "inbound_stock",
                     hozAlign: "center",
                     sorter: "number",
@@ -434,7 +434,7 @@ require_once __DIR__ . '/../' . 'header.php'; ?>
                     headerFilterLiveFilter: false
                 },
                 {
-                    title: "<?=__( 'Order Proposal Units', QA_MAIN_DOMAIN );?>",
+                    title: "<?php echo __( 'Order Proposal Units', QA_MAIN_DOMAIN );?>",
                     field: "order_proposal_units",
                     hozAlign: "center",
                     sorter: "number",
@@ -451,7 +451,7 @@ require_once __DIR__ . '/../' . 'header.php'; ?>
                 },
 				<?php if ($js_show_po_checkbox === 'true'): ?>
                 {
-                    title: "<?=__( 'Order QTY', QA_MAIN_DOMAIN );?>",
+                    title: "<?php echo __( 'Order QTY', QA_MAIN_DOMAIN );?>",
                     field: "order_qty",
                     hozAlign: "center",
                     sorter: false,
@@ -480,7 +480,7 @@ require_once __DIR__ . '/../' . 'header.php'; ?>
                     },
                 },
                 {
-                    title: "<?=__( 'Cost Price', QA_MAIN_DOMAIN );?>",
+                    title: "<?php echo __( 'Cost Price', QA_MAIN_DOMAIN );?>",
                     field: "cost_price",
                     hozAlign: "center",
                     sorter: "number",
@@ -490,7 +490,7 @@ require_once __DIR__ . '/../' . 'header.php'; ?>
                 },
 				<?php endif;?>
                 {
-                    title: "<?=__( 'Order Value @ Cost', QA_MAIN_DOMAIN );?>",
+                    title: "<?php echo __( 'Order Value @ Cost', QA_MAIN_DOMAIN );?>",
                     field: "order_value_cost",
                     hozAlign: "center",
                     sorter: "number",
@@ -516,7 +516,7 @@ require_once __DIR__ . '/../' . 'header.php'; ?>
                     },
                 },
                 {
-                    title: "<?=__( 'Order Value @ Retail', QA_MAIN_DOMAIN );?>",
+                    title: "<?php echo __( 'Order Value @ Retail', QA_MAIN_DOMAIN );?>",
                     field: "order_value_retail",
                     hozAlign: "center",
                     sorter: "number",

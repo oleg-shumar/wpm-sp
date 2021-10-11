@@ -85,10 +85,10 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                     <!-- container opened -->
                     <div class="container">
                         <!-- <editor-fold desc="includes"> -->
-                        <link href="<?= SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css" rel="stylesheet">
-                        <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
-                        <script type="text/javascript" src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/tabulator.min.js"></script>
-                        <script type="text/javascript" src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/xlsx.full.min.js"></script>
+                        <link href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css" rel="stylesheet">
+                        <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+                        <script type="text/javascript" src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/tabulator.min.js"></script>
+                        <script type="text/javascript" src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/xlsx.full.min.js"></script>
                         <!--</editor-fold>-->
                         <style>
                             /
@@ -101,7 +101,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                 }
                             }
                         </style>
-                        <h4><?= __( 'Stock Analyses', QA_MAIN_DOMAIN ); ?></h4>
+                        <h4><?php echo  __( 'Stock Analyses', QA_MAIN_DOMAIN ); ?></h4>
 						<?php
 
 						require_once __DIR__ . '/admin_page_header.php';
@@ -111,20 +111,20 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                             <div class="card-body">
                                 <div class="main-content-label mg-b-5">
                                     <div style="float:left; height:2.5em; text-align: left;margin-bottom: 5px;width:30%">
-										<?= __( 'Stock Review by Category', QA_MAIN_DOMAIN ); ?>
+										<?php echo  __( 'Stock Review by Category', QA_MAIN_DOMAIN ); ?>
                                     </div>
                                     <div style="float:right;height:2.5em; text-align: right;margin-bottom: 5px;width:70%">
                                         <button id="download-csv" class="btn btn-sm btn-info">
-											<?= __( 'Download CSV', QA_MAIN_DOMAIN ); ?>
+											<?php echo  __( 'Download CSV', QA_MAIN_DOMAIN ); ?>
                                         </button>
                                         <button id="download-json" class="btn btn-sm btn-info">
-											<?= __( 'Download JSON', QA_MAIN_DOMAIN ); ?>
+											<?php echo  __( 'Download JSON', QA_MAIN_DOMAIN ); ?>
                                         </button>
                                         <button id="download-xlsx" class="btn btn-sm btn-info">
-											<?= __( 'Download XLSX', QA_MAIN_DOMAIN ); ?>
+											<?php echo  __( 'Download XLSX', QA_MAIN_DOMAIN ); ?>
                                         </button>
                                         <button id="download-html" class="btn btn-sm btn-info">
-											<?= __( 'Download HTML', QA_MAIN_DOMAIN ); ?>
+											<?php echo  __( 'Download HTML', QA_MAIN_DOMAIN ); ?>
                                         </button>
                                     </div>
                                 </div>
@@ -207,7 +207,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                             }
 
 
-                                            var tabledata = <?=json_encode( $categories_data );?>;
+                                            var tabledata = <?php echo json_encode( $categories_data );?>;
 
                                             var table = new Tabulator("#table_1", {
                                                 // height:"311px",
@@ -231,7 +231,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                                         width: 50
                                                     },
                                                     {
-                                                        title: "<?=__( 'Category', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Category', QA_MAIN_DOMAIN );?>",
                                                         field: "name",
                                                         headerFilter: "input",
                                                         formatter: "link",
@@ -243,7 +243,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                                         }
                                                     },
                                                     {
-                                                        title: "<?=__( 'Ideal Stock', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Ideal Stock', QA_MAIN_DOMAIN );?>",
                                                         field: "ideal_stock",
                                                         hozAlign: "center",
                                                         sorter: "number",
@@ -252,7 +252,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                                         headerFilterLiveFilter: false
                                                     },
                                                     {
-                                                        title: "<?=__( 'Current Stock', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Current Stock', QA_MAIN_DOMAIN );?>",
                                                         field: "current_stock",
                                                         hozAlign: "center",
                                                         sorter: "number",
@@ -261,7 +261,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                                         headerFilterLiveFilter: false
                                                     },
                                                     {
-                                                        title: "<?=__( 'Inbound Stock', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Inbound Stock', QA_MAIN_DOMAIN );?>",
                                                         field: "inbound_stock",
                                                         hozAlign: "center",
                                                         sorter: "number",
@@ -270,7 +270,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                                         headerFilterLiveFilter: false
                                                     },
                                                     {
-                                                        title: "<?=__( 'Order Proposal Units', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Order Proposal Units', QA_MAIN_DOMAIN );?>",
                                                         field: "order_proposal_units",
                                                         hozAlign: "center",
                                                         sorter: "number",
@@ -288,7 +288,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
 														*/
                                                     },
                                                     {
-                                                        title: "<?=__( 'Sales L4W', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Sales L4W', QA_MAIN_DOMAIN );?>",
                                                         // field: "order_value_cost",
                                                         field: "sales_l4w",
                                                         hozAlign: "center",
@@ -298,7 +298,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                                         headerFilterLiveFilter: false
                                                     },
                                                     {
-                                                        title: "<?=__( 'Forecast N4W', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Forecast N4W', QA_MAIN_DOMAIN );?>",
                                                         // field: "order_value_retail",
                                                         field: "sales_n4w",
                                                         hozAlign: "center",
@@ -308,7 +308,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                                         headerFilterLiveFilter: false
                                                     },
                                                     {
-                                                        title: "<?=__( 'Weeks to Stock Out', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Weeks to Stock Out', QA_MAIN_DOMAIN );?>",
                                                         field: "weeks_to_stock_out",
                                                         hozAlign: "left",
                                                         sorter: "number",
@@ -357,20 +357,20 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                             <div class="card-body">
                                 <div class="main-content-label mg-b-5">
                                     <div style="float:left; height:2.5em; text-align: left;margin-bottom: 5px;width:50%">
-										<?= __( 'Stock Review by Product', QA_MAIN_DOMAIN ); ?>
+										<?php echo  __( 'Stock Review by Product', QA_MAIN_DOMAIN ); ?>
                                     </div>
                                     <div style="float:right;height:2.5em; text-align: right;margin-bottom: 5px;width:50%">
                                         <button id="download-csv2" class="btn btn-sm btn-info">
-											<?= __( 'Download CSV', QA_MAIN_DOMAIN ); ?>
+											<?php echo  __( 'Download CSV', QA_MAIN_DOMAIN ); ?>
                                         </button>
                                         <button id="download-json2" class="btn btn-sm btn-info">
-											<?= __( 'Download JSON', QA_MAIN_DOMAIN ); ?>
+											<?php echo  __( 'Download JSON', QA_MAIN_DOMAIN ); ?>
                                         </button>
                                         <button id="download-xlsx2" class="btn btn-sm btn-info">
-											<?= __( 'Download XLSX', QA_MAIN_DOMAIN ); ?>
+											<?php echo  __( 'Download XLSX', QA_MAIN_DOMAIN ); ?>
                                         </button>
                                         <button id="download-html2" class="btn btn-sm btn-info">
-											<?= __( 'Download HTML', QA_MAIN_DOMAIN ); ?>
+											<?php echo  __( 'Download HTML', QA_MAIN_DOMAIN ); ?>
                                         </button>
                                     </div>
                                 </div>
@@ -379,7 +379,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                     <div class="col-md-12 col">
                                         <div id="table_2"></div>
                                         <script>
-                                            var tabledata2 = <?=json_encode( $products_data );?>;
+                                            var tabledata2 = <?php echo json_encode( $products_data );?>;
 
                                             var table2 = new Tabulator("#table_2", {
                                                 // height:"311px",
@@ -403,7 +403,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                                         width: 50
                                                     },
                                                     {
-                                                        title: "<?=__( 'Product Name', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Product Name', QA_MAIN_DOMAIN );?>",
                                                         field: "name",
                                                         headerFilter: "input",
                                                         formatter: "link",
@@ -415,7 +415,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                                         }
                                                     },
                                                     {
-                                                        title: "<?=__( 'Ideal Stock', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Ideal Stock', QA_MAIN_DOMAIN );?>",
                                                         field: "ideal_stock",
                                                         hozAlign: "center",
                                                         sorter: "number",
@@ -424,7 +424,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                                         headerFilterLiveFilter: false
                                                     },
                                                     {
-                                                        title: "<?=__( 'Current Stock', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Current Stock', QA_MAIN_DOMAIN );?>",
                                                         field: "current_stock",
                                                         hozAlign: "center",
                                                         sorter: "number",
@@ -433,7 +433,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                                         headerFilterLiveFilter: false
                                                     },
                                                     {
-                                                        title: "<?=__( 'Inbound Stock', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Inbound Stock', QA_MAIN_DOMAIN );?>",
                                                         field: "inbound_stock",
                                                         hozAlign: "center",
                                                         sorter: "number",
@@ -442,7 +442,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                                         headerFilterLiveFilter: false
                                                     },
                                                     {
-                                                        title: "<?=__( 'Order Proposal Units', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Order Proposal Units', QA_MAIN_DOMAIN );?>",
                                                         field: "order_proposal_units",
                                                         hozAlign: "center",
                                                         sorter: "number",
@@ -458,7 +458,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                                         }
                                                     },
                                                     {
-                                                        title: "<?=__( 'Sales L4W', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Sales L4W', QA_MAIN_DOMAIN );?>",
                                                         // field: "order_value_cost",
                                                         field: "sales_l4w",
                                                         hozAlign: "center",
@@ -468,7 +468,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                                         headerFilterLiveFilter: false
                                                     },
                                                     {
-                                                        title: "<?=__( 'Forecast N4W', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Forecast N4W', QA_MAIN_DOMAIN );?>",
                                                         // field: "order_value_retail",
                                                         field: "sales_n4w",
                                                         hozAlign: "center",
@@ -478,7 +478,7 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                                                         headerFilterLiveFilter: false
                                                     },
                                                     {
-                                                        title: "<?=__( 'Weeks to Stock Out', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Weeks to Stock Out', QA_MAIN_DOMAIN );?>",
                                                         field: "weeks_to_stock_out",
                                                         hozAlign: "left",
                                                         sorter: "number",

@@ -21,11 +21,11 @@ if ( $_POST && isset( $_POST['save-warehouse'] ) ) {
 	}
 	if ( $result ) { ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-		<?= $msg; ?>
+		<?php echo  $msg; ?>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div><?php
 	} else { ?>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert"><?= __( 'Error occured, please try again', QA_MAIN_DOMAIN ); ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert"><?php echo  __( 'Error occured, please try again', QA_MAIN_DOMAIN ); ?>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -65,23 +65,23 @@ if ( $tmp ) {
                 <div class="page">
                     <!-- container opened -->
                     <div class="container">
-                        <link href="<?= SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css"
+                        <link href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css"
                               rel="stylesheet">
 
-                        <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js"></script>
-                        <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js"></script>
+                        <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js"></script>
+                        <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js"></script>
 
                         <script type="text/javascript"
-                                src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/tabulator.min.js"></script>
+                                src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/tabulator.min.js"></script>
                         <script type="text/javascript"
-                                src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/xlsx.full.min.js"></script>
+                                src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/xlsx.full.min.js"></script>
 
-                        <h4><?= __( 'Warehouses', QA_MAIN_DOMAIN ); ?></h4>
+                        <h4><?php echo  __( 'Warehouses', QA_MAIN_DOMAIN ); ?></h4>
 
                         <div class="card">
                             <div class="card-body">
                                 <div class="main-content-label mg-b-5">
-									<?= __( 'Add New', QA_MAIN_DOMAIN ); ?>
+									<?php echo  __( 'Add New', QA_MAIN_DOMAIN ); ?>
                                 </div>
                                 <p class="mg-b-20"></p>
                                 <div class="row">
@@ -170,7 +170,7 @@ if ( $tmp ) {
                                                 return true; //must return a boolean, true if it passes the filter.
                                             }
 
-                                            var tabledata = <?=json_encode( $tmp );?>;
+                                            var tabledata = <?php echo json_encode( $tmp );?>;
                                             var table = new Tabulator("#table_1", {
                                                 // height:"311px",
                                                 layout: "fitColumns",
@@ -178,7 +178,7 @@ if ( $tmp ) {
                                                 data: tabledata,
                                                 columns: [
                                                     {
-                                                        title: "<?=__( 'Name', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Name', QA_MAIN_DOMAIN );?>",
                                                         field: "warehouse_edit_link",
                                                         formatter: "link",
                                                         formatterParams: {
@@ -188,7 +188,7 @@ if ( $tmp ) {
                                                         }
                                                     },
                                                     {
-                                                        title: "<?=__( 'Email', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Email', QA_MAIN_DOMAIN );?>",
                                                         field: "warehouse_email",
                                                         headerFilter: "input",
                                                         formatter: "link",
@@ -199,19 +199,19 @@ if ( $tmp ) {
                                                         }
                                                     },
                                                     {
-                                                        title: "<?=__( 'Country / Region', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Country / Region', QA_MAIN_DOMAIN );?>",
                                                         field: "warehouse_country",
                                                         headerFilter: "input",
                                                         headerFilterLiveFilter: true
                                                     },
                                                     {
-                                                        title: "<?=__( 'City', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'City', QA_MAIN_DOMAIN );?>",
                                                         field: "warehouse_city",
                                                         headerFilter: "input",
                                                         headerFilterLiveFilter: true
                                                     },
                                                     {
-                                                        title: "<?=__( 'Address', QA_MAIN_DOMAIN );?>",
+                                                        title: "<?php echo __( 'Address', QA_MAIN_DOMAIN );?>",
                                                         field: "warehouse_address",
                                                         headerFilter: "input",
                                                         headerFilterLiveFilter: true
@@ -230,7 +230,7 @@ if ( $tmp ) {
                             <div class="card-body">
                                 <div class="main-content-label mg-b-5">
 									<?php if ( ! isset( $_GET['warehouse_id'] ) ) { ?>New <?php }
-									?><?= __( 'Warehouse Details', QA_MAIN_DOMAIN ); ?>
+									?><?php echo  __( 'Warehouse Details', QA_MAIN_DOMAIN ); ?>
                                 </div>
                                 <p class="mg-b-20"></p>
                                 <div class="row">
@@ -257,7 +257,7 @@ if ( $tmp ) {
                                             <form method="post">
 
                                                 <p style="font-weight: bold; font-size: inherit"
-                                                ><?= __( 'Here you can define the information about your warehouses and shipping addresses.', QA_MAIN_DOMAIN ); ?></p>
+                                                ><?php echo  __( 'Here you can define the information about your warehouses and shipping addresses.', QA_MAIN_DOMAIN ); ?></p>
 
                                                 <div class="row" id="js-add-new-supplier">
                                                     <div class="col-md-4 ">
@@ -265,13 +265,13 @@ if ( $tmp ) {
                                                             <input type="radio"
                                                                    name="warehouse_use_same"
                                                                    id="wh-alternate-delivery-1"
-                                                                   value="same" <?= $warehouse['warehouse_use_same'] ? '' : 'checked="checked"'; ?> /><label for="wh-alternate-delivery-1" style="font-weight: normal"><?= __( 'Delivery Address is the same as company address.', QA_MAIN_DOMAIN ); ?></label>
+                                                                   value="same" <?php echo  $warehouse['warehouse_use_same'] ? '' : 'checked="checked"'; ?> /><label for="wh-alternate-delivery-1" style="font-weight: normal"><?php echo  __( 'Delivery Address is the same as company address.', QA_MAIN_DOMAIN ); ?></label>
                                                         </p>
                                                         <p>
                                                             <input type="radio"
                                                                    name="warehouse_use_same"
                                                                    id="wh-alternate-delivery-2"
-                                                                   value="alter" <?= $warehouse['warehouse_use_same'] ? '' : 'checked="checked"'; ?> /><label for="wh-alternate-delivery-2" style="font-weight: normal"><?= __( 'Deliver my order to this address:', QA_MAIN_DOMAIN ); ?></label>
+                                                                   value="alter" <?php echo  $warehouse['warehouse_use_same'] ? '' : 'checked="checked"'; ?> /><label for="wh-alternate-delivery-2" style="font-weight: normal"><?php echo  __( 'Deliver my order to this address:', QA_MAIN_DOMAIN ); ?></label>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -280,58 +280,58 @@ if ( $tmp ) {
                                                 <!-- begin new form -->
                                                 <div class="row" id="js-add-new-supplier">
                                                     <div class="col-md-4 ">
-                                                        <label><?= __( 'Warehouse Name', QA_MAIN_DOMAIN ); ?>*</label>
+                                                        <label><?php echo  __( 'Warehouse Name', QA_MAIN_DOMAIN ); ?>*</label>
                                                         <input type="text" class="form-control"
                                                                name="warehouse_name"
                                                                required="required"
-                                                               value="<?= esc_attr( $warehouse['warehouse_name'] ); ?>" placeholder="Warehouse Name*"/>
-                                                        <label><?= __( 'Warehouse Address', QA_MAIN_DOMAIN ); ?>*</label>
+                                                               value="<?php echo  esc_attr( $warehouse['warehouse_name'] ); ?>" placeholder="Warehouse Name*"/>
+                                                        <label><?php echo  __( 'Warehouse Address', QA_MAIN_DOMAIN ); ?>*</label>
                                                         <input type="text" class="form-control"
                                                                name="warehouse_address"
                                                                required="required"
-                                                               value="<?= esc_attr( $warehouse['warehouse_address'] ); ?>" placeholder="Warehouse Address*"/>
-                                                        <label><?= __( 'Postal Code', QA_MAIN_DOMAIN ); ?>*</label>
+                                                               value="<?php echo  esc_attr( $warehouse['warehouse_address'] ); ?>" placeholder="Warehouse Address*"/>
+                                                        <label><?php echo  __( 'Postal Code', QA_MAIN_DOMAIN ); ?>*</label>
                                                         <input type="text" class="form-control"
                                                                name="warehouse_postal_code"
                                                                required="required"
-                                                               value="<?= esc_attr( $warehouse['warehouse_postal_code'] ); ?>" placeholder="Postal Code*"/>
-                                                        <label><?= __( 'City', QA_MAIN_DOMAIN ); ?>*</label>
+                                                               value="<?php echo  esc_attr( $warehouse['warehouse_postal_code'] ); ?>" placeholder="Postal Code*"/>
+                                                        <label><?php echo  __( 'City', QA_MAIN_DOMAIN ); ?>*</label>
                                                         <input type="text" class="form-control"
                                                                name="warehouse_city"
                                                                required="required"
-                                                               value="<?= esc_attr( $warehouse['warehouse_city'] ); ?>" placeholder="City*"/>
-                                                        <label><?= __( 'Country', QA_MAIN_DOMAIN ); ?>*</label>
+                                                               value="<?php echo  esc_attr( $warehouse['warehouse_city'] ); ?>" placeholder="City*"/>
+                                                        <label><?php echo  __( 'Country', QA_MAIN_DOMAIN ); ?>*</label>
                                                         <input type="text" class="form-control"
                                                                name="warehouse_country"
                                                                required="required"
-                                                               value="<?= esc_attr( $warehouse['warehouse_country'] ); ?>" placeholder="Country*"/>
+                                                               value="<?php echo  esc_attr( $warehouse['warehouse_country'] ); ?>" placeholder="Country*"/>
                                                         <br>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label><?= __( 'Phone', QA_MAIN_DOMAIN ); ?>
+                                                        <label><?php echo  __( 'Phone', QA_MAIN_DOMAIN ); ?>
                                                         </label>
                                                         <input type="text" class="form-control"
                                                                name="warehouse_phone"
-                                                               value="<?= esc_attr( $warehouse['warehouse_phone'] ); ?>"
+                                                               value="<?php echo  esc_attr( $warehouse['warehouse_phone'] ); ?>"
                                                                placeholder="Phone"/>
-                                                        <label><?= __( 'Website', QA_MAIN_DOMAIN ); ?>
+                                                        <label><?php echo  __( 'Website', QA_MAIN_DOMAIN ); ?>
                                                         </label>
                                                         <input type="text" class="form-control"
                                                                name="warehouse_website"
-                                                               value="<?= esc_attr( $warehouse['warehouse_website'] ); ?>"
+                                                               value="<?php echo  esc_attr( $warehouse['warehouse_website'] ); ?>"
                                                                placeholder="Website"/>
-                                                        <label><?= __( 'Email', QA_MAIN_DOMAIN ); ?>
+                                                        <label><?php echo  __( 'Email', QA_MAIN_DOMAIN ); ?>
                                                         </label>
                                                         <input type="text" class="form-control"
                                                                name="warehouse_email"
-                                                               value="<?= esc_attr( $warehouse['warehouse_email'] ); ?>"
+                                                               value="<?php echo  esc_attr( $warehouse['warehouse_email'] ); ?>"
                                                                placeholder="Email"/>
                                                     </div>
                                                 </div>
                                                 <!-- end new form -->
                                                 <p class="mg-b-20"></p>
                                                 <input style="margin-top: 2em" type="submit" class="btn btn-sm btn-success"
-                                                       value="<?= __( 'Save', QA_MAIN_DOMAIN ); ?>"
+                                                       value="<?php echo  __( 'Save', QA_MAIN_DOMAIN ); ?>"
                                                        name="save-warehouse"/>
                                             </form>
 										<?php } ?>

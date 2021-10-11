@@ -6,102 +6,102 @@ if ( ! in_array( 'woocommerce/woocommerce.php', $filters ) ) {
 } else {
 	$step = 1;
 	?>
-    <h2 class="sphd-category"><?= __( 'Industry', QA_MAIN_DOMAIN ); ?></h2><h4><?= __( 'Please specify which industry your company belongs to.', QA_MAIN_DOMAIN ); ?></h4>
+    <h2 class="sphd-category"><?php echo  __( 'Industry', QA_MAIN_DOMAIN ); ?></h2><h4><?php echo  __( 'Please specify which industry your company belongs to.', QA_MAIN_DOMAIN ); ?></h4>
     <table class="sphd-answers-1">
         <tr>
             <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Fashion & Apparel', 'industry' ); ?>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Fashion & Apparel', 'industry' ); ?>
             </td>
             <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Beauty & Personal Care', 'industry' ); ?>
-            </td>
-        </tr>
-        <tr>
-            <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Footwear', 'industry' ) ?>
-            </td>
-            <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Home & Household', 'industry' ) ?>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Beauty & Personal Care', 'industry' ); ?>
             </td>
         </tr>
         <tr>
             <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Bags & Suitcases', 'industry' ) ?>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Footwear', 'industry' ) ?>
             </td>
             <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Furniture & Decoration', 'industry' ) ?>
-            </td>
-        </tr>
-        <tr>
-            <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Jewellery & Watches', 'industry' ) ?>
-            </td>
-            <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Consumer Electronics', 'industry' ) ?>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Home & Household', 'industry' ) ?>
             </td>
         </tr>
         <tr>
             <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Babywear', 'industry' ) ?>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Bags & Suitcases', 'industry' ) ?>
             </td>
             <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Health', 'industry' ) ?>
-            </td>
-        </tr>
-        <tr>
-            <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Optical', 'industry' ) ?>
-            </td>
-            <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Toys & Games', 'industry' ) ?>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Furniture & Decoration', 'industry' ) ?>
             </td>
         </tr>
         <tr>
             <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Sportswear & Sporting goods', 'industry' ) ?>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Jewellery & Watches', 'industry' ) ?>
             </td>
             <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Bookshop', 'industry' ) ?>
-            </td>
-        </tr>
-        <tr>
-            <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Outdoor Life', 'industry' ) ?>
-            </td>
-            <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Gardening', 'industry' ) ?>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Consumer Electronics', 'industry' ) ?>
             </td>
         </tr>
         <tr>
             <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Equestrian', 'industry' ) ?>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Babywear', 'industry' ) ?>
             </td>
             <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'DIY', 'industry' ) ?>
-            </td>
-        </tr>
-        <tr>
-            <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Drinks & Beverages', 'industry' ) ?>
-            </td>
-            <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Pet Store', 'industry' ) ?>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Health', 'industry' ) ?>
             </td>
         </tr>
         <tr>
             <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Food', 'industry' ) ?>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Optical', 'industry' ) ?>
             </td>
             <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Car Parts & Car Care', 'industry' ) ?>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Toys & Games', 'industry' ) ?>
             </td>
         </tr>
         <tr>
             <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Kitchen & Dining', 'industry' ) ?>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Sportswear & Sporting goods', 'industry' ) ?>
             </td>
             <td>
-				<?= SPHD_Wizard::get_checkbox( 1, 'Other', 'industry' ) ?>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Bookshop', 'industry' ) ?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Outdoor Life', 'industry' ) ?>
+            </td>
+            <td>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Gardening', 'industry' ) ?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Equestrian', 'industry' ) ?>
+            </td>
+            <td>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'DIY', 'industry' ) ?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Drinks & Beverages', 'industry' ) ?>
+            </td>
+            <td>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Pet Store', 'industry' ) ?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Food', 'industry' ) ?>
+            </td>
+            <td>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Car Parts & Car Care', 'industry' ) ?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Kitchen & Dining', 'industry' ) ?>
+            </td>
+            <td>
+				<?php echo  SPHD_Wizard::get_checkbox( 1, 'Other', 'industry' ) ?>
             </td>
         </tr>
     </table>

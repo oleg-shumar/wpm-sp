@@ -50,8 +50,8 @@ require_once __DIR__ . '/../' . 'header.php';
             <div class="page">
                 <!-- container opened -->
                 <div class="container" style="max-width: 100%;">
-                    <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-                    <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+                    <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+                    <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
                     <style>
                         .sp-settings-form p {
                             margin-top: 3%;
@@ -149,15 +149,15 @@ require_once __DIR__ . '/../' . 'header.php';
                             margin-bottom: 0;
                         }
                     </style>
-                    <h4><?= __( 'Settings', QA_MAIN_DOMAIN ); ?></h4>
+                    <h4><?php echo  __( 'Settings', QA_MAIN_DOMAIN ); ?></h4>
                     <div class="card">
                         <form class="card-body" method="post">
                             <div>
-                                <h4><?= __( 'Category Mapping', QA_MAIN_DOMAIN ); ?></h4>
+                                <h4><?php echo  __( 'Category Mapping', QA_MAIN_DOMAIN ); ?></h4>
                                 <p class="mg-b-20"></p>
-                                <p><b><?= __( 'To understand the patterns and performance of your products, we need to link your store’s categories to predefined segments and industries.', QA_MAIN_DOMAIN ); ?></b></p>
-                                <p><b><?= __( 'Please map your store’s categories to the segment that fits best, so we can create the perfect forecast and reports for your products.', QA_MAIN_DOMAIN ); ?></b></p>
-                                <p><b><?= __( "If you are unsure about what segment to assign a category to, or if you don’t find it in the list below, you can assign it to 'Other' and we will match it for you.", QA_MAIN_DOMAIN ); ?></b></p>
+                                <p><b><?php echo  __( 'To understand the patterns and performance of your products, we need to link your store’s categories to predefined segments and industries.', QA_MAIN_DOMAIN ); ?></b></p>
+                                <p><b><?php echo  __( 'Please map your store’s categories to the segment that fits best, so we can create the perfect forecast and reports for your products.', QA_MAIN_DOMAIN ); ?></b></p>
+                                <p><b><?php echo  __( "If you are unsure about what segment to assign a category to, or if you don’t find it in the list below, you can assign it to 'Other' and we will match it for you.", QA_MAIN_DOMAIN ); ?></b></p>
                                 <input type="submit" class="btn btn-sm
                                     btn-success" value="Save Settings" name="save-store-settings"> <input type="hidden" id="category-mapping" name="category_mapping" value="">
                             </div>
@@ -166,15 +166,15 @@ require_once __DIR__ . '/../' . 'header.php';
                                     <h5>Other</h5>
 									<?php
 									foreach ( $tmp_cats as $tmp_cat_id => $tmp_cat_title ): ?>
-                                        <article class="js-card" draggable="true" ondragstart="drag(event)" style="text-align: center; border-radius: 5px" data-id="<?= (int) $tmp_cat_id; ?>"><?= esc_html( $tmp_cat_title ) ?></article>
+                                        <article class="js-card" draggable="true" ondragstart="drag(event)" style="text-align: center; border-radius: 5px" data-id="<?php echo  (int) $tmp_cat_id; ?>"><?php echo  esc_html( $tmp_cat_title ) ?></article>
 									<?php endforeach; ?>
                                 </div>
-								<?= implode( "\n", $industry_columns ) ?>
+								<?php echo  implode( "\n", $industry_columns ) ?>
                             </main>
                             <script>
-                                let category_mapping = <?= json_encode( $category_mapping ) ?>;
+                                let category_mapping = <?php echo  json_encode( $category_mapping ) ?>;
                             </script>
-                            <script src="<?= esc_attr( SP_PLUGIN_DIR_URL ) ?>assets/js/drag-n-drop-new.js?<?= time() ?>"></script>
+                            <script src="<?php echo  esc_attr( SP_PLUGIN_DIR_URL ) ?>assets/js/drag-n-drop-new.js?<?php echo  time() ?>"></script>
                             <input style="margin-top: 2em" type="submit" class="btn btn-sm btn-success" value="Save Settings" name="save-store-settings"/>
                         </form>
                     </div>

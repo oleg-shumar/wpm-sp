@@ -3,7 +3,7 @@
 Contributors: shelfplanner
 Tags: sales forecasting, model stock, order proposals, replenishment, purchase orders, suppliers, inventory management
 Requires at least: 4.6
-Tested up to: 5.3.2
+Tested up to: 5.8.1
 Stable tag: 0.1.0
 Requires PHP: 5.6
 License: GPLv2 or later

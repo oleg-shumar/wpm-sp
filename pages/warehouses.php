@@ -65,13 +65,8 @@ if ( $tmp ) {
                 <div class="page">
                     <!-- container opened -->
                     <div class="container">
-                        <link rel="stylesheet"
-                              href="<?= SP_PLUGIN_DIR_URL; ?>assets/bootstrap.min.css">
                         <link href="<?= SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css"
                               rel="stylesheet">
-
-                        <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/flat-ui.css">
-                        <link rel="stylesheet" href="<?= SP_PLUGIN_DIR_URL; ?>assets/common.css">
 
                         <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js"></script>
                         <script src="<?= SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js"></script>

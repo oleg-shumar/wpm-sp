@@ -80,11 +80,18 @@
     function updateCharts() {
         jQuery.get('<?php echo get_home_url();?>');
         jQuery('#sp-total-orders-count, #sp-analyzed-orders-count').html('Updating...');
-        jQuery.getJSON('<?php echo  plugin_dir_url( __FILE__ ); ?>ajax.php', function (data) {
+        jQuery.ajax ({
+            url: ajaxurl,
+            type : 'POST',
+            dataType: "json",
+            data : {
+                action : 'sp-ajax'
+            },
+        success: function (data) {
             jQuery('#sp-total-orders-count').html(data.total);
             jQuery('#sp-analyzed-orders-count').html(data.analyzed);
             window.chart.updateSeries([data.progress]);
-        });
+        }});
     }
 
     setInterval(function () {

@@ -143,12 +143,12 @@ add_action( 'wp_ajax_sphd_purge_data', 'ajax_sphd_purge_data' );
 /**
  * SP API
  */
-const SP_API_ENDPOINT           = 'https://apifc.shelfplanner.com';
+const SP_API_ENDPOINT = 'https://apifc.shelfplanner.com';
 
 /**
  * Meta key for processing marks
  */
-const SP_META_KEY_PROCESSED     = 'imported_to_shelf_planner_2021_test14';
+const SP_META_KEY_PROCESSED = 'imported_to_shelf_planner_2021_test14';
 
 /**
  * How much orders to push per call (while import process)
@@ -169,8 +169,8 @@ require_once __DIR__ . '/admin_init.php';
 define( 'SP_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
 define( 'SP_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
 
-const SP_FILE_INDEX = __FILE__;
-const SP_ROOT_DIR   = __DIR__;
+const SP_FILE_INDEX    = __FILE__;
+const SP_ROOT_DIR      = __DIR__;
 const SP_FORECAST_FILE = __DIR__ . '/forecast.json';
 
 require_once __DIR__ . '/includes/functions_new.php';
@@ -216,7 +216,7 @@ if ( is_admin() ) {
 		try {
 			spApiLog( 'Trying to download the JSON forecast: ' . $forecast_url );
 
-			$sp_json_data = wp_remote_retrieve_body ( wp_remote_get( $forecast_url ) );
+			$sp_json_data = wp_remote_retrieve_body( wp_remote_get( $forecast_url ) );
 			if ( $sp_json_data !== false ) {
 				spApiLog( 'Download Success, JSON length is: ' . mb_strlen( $sp_json_data ), 'success' );
 
@@ -390,14 +390,14 @@ function pushOrder( $order_ids ) {
 
 	$sp_json_data = json_encode( [ 'SalesRow' => $sales_row ] );
 
-	$url = SP_API_ENDPOINT . '/Api/Sales';
-	$args = array(
-		'method' => 'POST',
+	$url      = SP_API_ENDPOINT . '/Api/Sales';
+	$args     = array(
+		'method'  => 'POST',
 		'headers' => array(
 			'content-type' => 'application/json', // Set content type to multipart/form-data
 		),
-        'body' => "'" . $sp_json_data . "'",
-        'timeout' => 60 * 60 * 10,
+		'body'    => "'" . $sp_json_data . "'",
+		'timeout' => 60 * 60 * 10,
 	);
 	$response = wp_remote_request( $url, $args );
 
@@ -497,7 +497,7 @@ function qa_main_adv_product_options() {
 	echo '<header><h4 style="padding-bottom: 0px !important; color:#000; margin-bottom: 0px; padding-left: 10px;">Shelf Planner Product Settings</h4></header>';
 	echo '<div class="options_group">';
 	?>
-    <input type="hidden" name="tmp_qa_stock" value="<?php echo  $product->get_stock_quantity(); ?>"/>
+    <input type="hidden" name="tmp_qa_stock" value="<?php echo $product->get_stock_quantity(); ?>"/>
 	<?php
 
 	$data = $wpdb->get_results( "SELECT * FROM {$wpdb->product_settings} WHERE product_id = " . get_the_ID(), ARRAY_A );
@@ -666,8 +666,8 @@ function sp_save_custom_field_variations( $variation_id, $i ) {
 	global $wpdb;
 
 	if ( isset( $_POST['variation_cost_price'][ $i ] ) ) {
-		$variation_id = (int)$variation_id;
-	    $variation_cost_price = (float) $_POST['variation_cost_price'][ $i ];
+		$variation_id         = (int) $variation_id;
+		$variation_cost_price = (float) $_POST['variation_cost_price'][ $i ];
 		update_post_meta( $variation_id, 'variation_cost_price', $variation_cost_price );
 		\QAMain_Core::get_product_settings( $variation_id );
 
@@ -680,9 +680,113 @@ function sp_save_custom_field_variations( $variation_id, $i ) {
  */
 function sp_rewrites_init() {
 	global $wp_rewrite;
-	$file_logger = ltrim( str_replace( $_SERVER['DOCUMENT_ROOT'], '', plugin_dir_path( __FILE__ ) . 'sp-logger.php' ), '/' );
-	add_rewrite_rule( 'sp-logs', $file_logger, 'top' );
 	$wp_rewrite->flush_rules();
 }
 
 add_action( 'init', 'sp_rewrites_init' );
+
+add_action( 'wp_ajax_sp-ajax', 'find_sp_ajax__ajax_callback' );
+function find_sp_ajax__ajax_callback() {
+	if ( isset( $_GET['bg'] ) ) {
+		if ( $_GET['bg'] == 'true' ) {
+			update_option( 'sp.in_background', 'checked' );
+		} else {
+			update_option( 'sp.in_background', 'false' );
+		}
+	} elseif ( isset( $_GET['log'] ) ) {
+		if ( $_GET['log'] == 'true' ) {
+			update_option( 'sp.log', 'checked' );
+		} else {
+			update_option( 'sp.log', 'false' );
+		}
+	} elseif ( isset( $_GET['sp-analyzed-orders-count'] ) ) {
+		echo ShelfPlannerCore::getAnalyzedOrdersCount();
+	} elseif ( isset( $_GET['sp-total-orders-count'] ) ) {
+		echo ShelfPlannerCore::getOrdersCount();
+	} elseif ( isset( $_GET['sp-chart'] ) ) {
+		echo (int) ( min( 100, ( ShelfPlannerCore::getAnalyzedOrdersCount() / max( 1, ShelfPlannerCore::getOrdersCount() ) * 100 ) ) );
+	} else {
+		echo json_encode( [
+			'total'    => ShelfPlannerCore::getOrdersCount(),
+			'analyzed' => ShelfPlannerCore::getAnalyzedOrdersCount(),
+			'progress' => ShelfPlannerCore::getAnalyzedProgress(),
+		] );
+	}
+
+	exit;
+}
+
+/**
+ * Parse XLSX
+ */
+add_action( 'wp_ajax_sp-ajax-xlsx', 'find_sp_ajax_xlsx__ajax_callback' );
+function find_sp_ajax_xlsx__ajax_callback() {
+	global $wpdb;
+
+	require_once __DIR__ . '/includes/simple_xlsx.class.php';
+	require_once __DIR__ . '/includes/core.php';
+
+	if ( $_FILES && isset( $_FILES['excel'] ) ) {
+		if ( $_FILES['excel']['type'] != 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' ) {
+			wp_die( 'Error: unsupported file format. Try again please' );
+		}
+
+		$new_dataset_data = [];
+		$xlsx_file        = $_FILES['excel']['tmp_name'];
+
+		if ( $xlsx = SimpleXLSX::parse( $xlsx_file ) ) {
+			foreach ( $xlsx->rows() as $line => $each_row ) {
+				if ( 0 == $line ) {
+					foreach ( $each_row as $k => $cell ) {
+						if ( ! trim( $cell ) ) {
+							continue;
+						}
+						$new_dataset_data['title'][ $k ] = esc_sql( $cell );
+					}
+				} else {
+					foreach ( $each_row as $k => $cell ) {
+						if ( $new_dataset_data['title'][ $k ] ) {
+							$new_dataset_data['items'][ $line ][ $new_dataset_data['title'][ $k ] ] = esc_sql( $cell );
+						}
+					}
+				}
+			}
+		} else {
+			$error_str = SimpleXLSX::parseError();
+		}
+
+		if ( $new_dataset_data['items'] ) {
+			foreach ( $new_dataset_data['items'] as $item ) {
+				if ( ! $item['product_id'] ) {
+					continue;
+				}
+				$wpdb->replace( $wpdb->product_settings, $item );
+			}
+		}
+
+		echo "<center>Succesfully imported " . count( $new_dataset_data['items'] ) . " items. You can close this window.</center>";
+
+		?>
+        <script>
+            // Reload the parent page to see the changes in dataset
+            setTimeout(function () {
+                parent.location.reload();
+            }, 2000);
+        </script>
+		<?php
+	}
+
+	?>
+    <div style="width:600px; height: 4em; padding-top: 5px; margin: auto; text-align: center;">
+        <form action="<?php echo admin_url( 'admin-ajax.php?action=sp-ajax-xlsx' ); ?>" method="POST" enctype="multipart/form-data">
+            <p>
+                <strong>Upload .XLSX file</strong> <select name="import_mode" style="display: none">
+                    <option value="append" style="color: darkgreen">Append</option>
+                    <option value="overwrite" style="color: darkred">Overwrite</option>
+                </select>
+            </p>
+            <input type="file" name="excel" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/> <input type="submit" onclick="this.innerHTML = 'Loading...';">
+        </form>
+    </div>
+	<?php
+}

@@ -28,10 +28,10 @@ if ( $_POST && isset( $_POST['action'] ) ) {
 		$writer = new XLSXWriter();
 		$writer->writeSheet( $sample_data );
 
-		$file_name = $_SERVER['HTTP_HOST'] . '_Products_Settings_Sample_' . time() . '.xlsx';
-		$file_path = __DIR__ . DIRECTORY_SEPARATOR . $file_name;
+		$file_name = sanitize_file_name($_SERVER['HTTP_HOST'] . '_Products_Settings_Sample_' . time() . '.xlsx');
+		$file_path = SP_PLUGIN_DIR_PATH . $file_name;
 		$writer->writeToFile( $file_path );
-		header( "Location: " . plugin_dir_url( __FILE__ ) . $file_name );
+		header( "Location: " . str_replace('pages', '', plugin_dir_url( __FILE__ ) . $file_name) );
 		exit;
 	} elseif ( $_POST['action'] == 'export' ) {
 		/**
@@ -98,7 +98,7 @@ require_once SP_ROOT_DIR . '/pages/admin_page_header.php';
                                             </form>
                                             <div style="max-width: 200px; float: left; margin-right: 10px;">
                                                 <p>
-                                                    <a href="<?php echo  plugin_dir_url( SP_FILE_INDEX ); ?>upload_settings_xlsx.php?TB_iframe=true&width=600&height=100" target="_blank"> <input type="button" class="button button-primary" value="<?php echo  __( 'Import', QA_MAIN_DOMAIN ); ?>"/> </a>
+                                                    <a href="<?php echo admin_url( 'admin-ajax.php?action=sp-ajax-xlsx&upload_settings_xlsx.php?TB_iframe=true&width=600&height=100' ); ?>" target="_blank"> <input type="button" class="button button-primary" value="<?php echo  __( 'Import', QA_MAIN_DOMAIN ); ?>"/> </a>
                                                 </p>
                                             </div>
                                             <form action="" method="POST" style="max-width: 200px; float: left; margin-right: 10px;">

@@ -27,10 +27,12 @@
                                         <p class="mg-b-20"></p>
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <label class="ckbox"><input checked="<?php echo  esc_attr( get_option( 'sp.in_background', 'checked' ) ); ?>" type="checkbox" onchange="jQuery.get('<?php echo  plugin_dir_url( __FILE__ ); ?>ajax.php?bg='+jQuery(this).prop('checked'));"><span style="display: inline-block;padding-top: 3px;"><?php echo  __( 'Work in Background', QA_MAIN_DOMAIN ); ?></span></label>
+                                                <label class="ckbox"><input checked="<?php echo  esc_attr( get_option( 'sp.in_background', 'checked' ) ); ?>" type="checkbox"
+                                                                            onchange='jQuery.get(ajaxurl, {"action": "sp-ajax", "bg": jQuery(this).prop("checked"));'><span style="display: inline-block;padding-top: 3px;"><?php echo  __( 'Work in Background', QA_MAIN_DOMAIN ); ?></span></label>
                                             </div>
                                             <div class="col-lg-6 mg-t-20 mg-lg-t-0" style="white-space: nowrap !important; text-wrap: avoid">
-                                                <label class="ckbox"><input <?php echo  esc_attr( get_option( 'sp.log', 'checked' ) ); ?> type="checkbox" onchange="jQuery.get('<?php echo  plugin_dir_url( __FILE__ ); ?>ajax.php?log='+jQuery(this).prop('checked'));"><span style="display: inline-block;padding-top: 3px;"><?php echo  __( 'Debug Log', QA_MAIN_DOMAIN ); ?></span></label>
+                                                <label class="ckbox"><input <?php echo  esc_attr( get_option( 'sp.log', 'checked' ) ); ?> type="checkbox"
+                                                  onchange='jQuery.get(ajaxurl, {"action": "sp-ajax", "log": jQuery(this).prop("checked"));'><span style="display: inline-block;padding-top: 3px;"><?php echo  __( 'Debug Log', QA_MAIN_DOMAIN ); ?></span></label>
                                             </div>
                                         </div>
                                     </div>

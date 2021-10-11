@@ -193,9 +193,45 @@ require_once __DIR__ . '/../' . 'header.php'; ?>
 							$_SESSION['order_info']['order_num'] = $po_data_post_2['order_number'];
 
 
-							$html = sp_make_order_pdf();
-                            // Already sanitized in sp_make_order_pdf()
-							echo $html;
+							list($html, $order_info) = sp_make_order_pdf();
+                            ?>
+                            <style>
+                                #wpfooter { display: none }
+                                @media print {
+                                    .card {
+                                        background-color: white;
+                                        height: 100%;
+                                        width: 100%;
+                                        position: fixed;
+                                        top: 0;
+                                        left: 0;
+                                        margin: 0;
+                                        padding: 15px;
+                                    }
+
+                                    #po-final-stage, .print-hide {
+                                        display: none !important;
+                                    }
+                                }
+                                .po-template table,
+                                .po-template div {
+                                    font-family: 'Courier New' !important;
+                                }
+                            </style>
+                        <?php
+							echo wp_kses_post($html);
+							?>
+                            <div style="padding: 50px">
+                                <form action="" method="post" id="po-final-stage">
+                                    <input type="hidden" name="order_id" value="' . esc_html( $order_info['order_id'] ) . '" >
+                                    <input type="hidden" name="order_num" value="' . esc_html( $order_info['order_num'] ) . '" >
+                                    <input type="submit" class="btn btn-success" name="po_do_save" value="Back to Orders">
+                                    <button class="btn btn-sm btn-info" onclick="window.print(); return false;"> <?php echo __( 'Print', QA_MAIN_DOMAIN ) ?> </button>
+                                    <input type="submit" class="btn btn-sm btn-info" name="po_do_cancel" value="Delete">
+                                </form>
+                            </div>
+                        </div></div>
+                        <?php
 						} else {
 						?>
                         <h4><?php echo  __( 'Purchase Orders', QA_MAIN_DOMAIN ); ?></h4>

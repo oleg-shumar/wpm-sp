@@ -11,6 +11,11 @@ class SPHD_Admin {
 		) );
 
 		add_action( 'admin_menu', array( __CLASS__, 'register_menu' ) );
+
+		add_filter( 'safe_style_css', function( $styles ) {
+			$styles[] = 'display';
+			return $styles;
+		} );
 	}
 
 	/**

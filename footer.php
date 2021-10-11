@@ -1,6 +1,6 @@
 <!-- Back-to-top -->
 <a href="#top" id="back-to-top"><i class="las la-angle-double-up"></i></a>
-<?php if($_GET['page'] == 'sp_integrations'){ ?>
+<?php if(sanitize_title( $_GET['page'] ) == 'sp_integrations'){ ?>
 <script>
     /*--- Apex (#chart) ---*/
     var options = {

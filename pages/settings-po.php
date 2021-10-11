@@ -87,7 +87,6 @@ $po_swift_code      = get_option( 'sp.settings.po_swift_code', '' );
 $po_iban            = get_option( 'sp.settings.po_iban', '' );
 
 $po_company_logo = get_option( 'sp.settings.po_company_logo', '' );
-$po_company_logo = strlen( $po_company_logo ) > 0 ? '<img onclick="jQuery(\'#company-logo-upload\').show()" style="cursor:pointer" src="' . esc_attr( $po_company_logo ) . '">' : '';
 
 require_once __DIR__ . '/admin_page_header.php';
 require_once __DIR__ . '/../' . 'header.php';
@@ -139,7 +138,11 @@ require_once __DIR__ . '/../' . 'header.php';
                                         <label><?php echo  __( 'Phone', QA_MAIN_DOMAIN ); ?></label> <input type="text" class="form-control" name="po-phone" value="<?php echo  esc_attr( $po_phone ); ?>" placeholder="Phone"/> <label><?php echo  __( 'Website', QA_MAIN_DOMAIN ); ?></label> <input type="text" class="form-control" name="po-website" value="<?php echo  esc_attr( $po_website ); ?>" placeholder="Website"/> <label><?php echo  __( 'Email', QA_MAIN_DOMAIN ); ?></label> <input type="text" class="form-control" name="po-email" value="<?php echo  esc_attr( $po_email ); ?>" placeholder="Email"/> <label><?php echo  __( 'VAT Registration Number', QA_MAIN_DOMAIN ); ?></label> <input type="text" class="form-control" name="po-vat-number" value="<?php echo  esc_attr( $po_vat_number ); ?>" placeholder="VAT Registration Number"/> <label><?php echo  __( 'Your company logo', QA_MAIN_DOMAIN ); ?></label>
 										<?php
 										// Already escaped
-										echo $po_company_logo;
+										if($po_company_logo){
+										    ?>
+                                            <img onclick="jQuery('#company-logo-upload').show()" style="cursor:pointer" src="<?php echo esc_attr( $po_company_logo ); ?>" />
+                                        <?php
+										}
 										?>
                                         <div id="company-logo-upload" style="<?php echo  strlen( $po_company_logo ) > 0 ? 'display:none' : ''; ?>">
                                             <input type="file" class="form-control" name="po-company-logo"/>

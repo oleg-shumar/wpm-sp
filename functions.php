@@ -120,8 +120,7 @@ function sp_make_order_pdf() {
 
 	$order_info = (array) $_SESSION['order_info'];
 
-	$html = '<style>#wpfooter { display: none }</style>';
-	$html .= '<h4>' . __( 'Purchase Orders', QA_MAIN_DOMAIN ) . '</h4>';
+	$html = '<h4>' . __( 'Purchase Orders', QA_MAIN_DOMAIN ) . '</h4>';
 	$html .= '<div class="card"><div class="card-body">';
 	$html .= '<div class="print-hide" style="background-color: green; color: white; margin: auto; font-size: 14px; padding: 10px; width: 90%; position: relative; border-radius: 3px; text-align: center">&nbsp;' . __( 'Purchase Order successfully created!', QA_MAIN_DOMAIN ) . '&nbsp;</div>';
 
@@ -213,37 +212,7 @@ function sp_make_order_pdf() {
 		$contents = str_replace( "[{$html_var}]", $html_val, $contents );
 	}
 
-	$html .= '
-	<style>
-	@media print {
-	    .card {
-	        background-color: white;
-	        height: 100%;
-	        width: 100%;
-	        position: fixed;
-	        top: 0;
-	        left: 0;
-	        margin: 0;
-	        padding: 15px;
-	    }
-	    
-	    #po-final-stage, .print-hide {
-	        display: none !important;
-	    }
-	}
-	</style>
-	<div style="padding: 50px">
-	<form action="" method="post" id="po-final-stage">
-		<input type="hidden" name="order_id" value="' . esc_html( $order_info['order_id'] ) . '" >
-		<input type="hidden" name="order_num" value="' . esc_html( $order_info['order_num'] ) . '" >
-		<input type="submit" class="btn btn-success" name="po_do_save" value="Back to Orders">
-		<button class="btn btn-sm btn-info" onclick="window.print(); return false;">' . __( 'Print', QA_MAIN_DOMAIN ) . '</button>
-		<input type="submit" class="btn btn-sm btn-info" name="po_do_cancel" value="Delete">
-	</form>
-	</div>';
-	$html .= '</div></div>';
-
-	return $html;
+	return [$html, $order_info];
 }
 
 /**

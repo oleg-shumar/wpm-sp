@@ -167,6 +167,7 @@ require_once __DIR__ . '/admin_init.php';
  * Domain
  */
 define( 'SP_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
+define( 'SP_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
 
 const SP_FILE_INDEX = __FILE__;
 const SP_ROOT_DIR   = __DIR__;

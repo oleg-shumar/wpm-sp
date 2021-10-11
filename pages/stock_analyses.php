@@ -84,17 +84,8 @@ list ( $products_data, $categories_data ) = sp_calc_stock_analyses();
                 <div class="page">
                     <!-- container opened -->
                     <div class="container">
-                        <!-- <editor-fold desc="includes"> -->
-                        <link href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css" rel="stylesheet">
-                        <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
-                        <script type="text/javascript" src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/tabulator.min.js"></script>
-                        <script type="text/javascript" src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/xlsx.full.min.js"></script>
-                        <!--</editor-fold>-->
+                        <?php include SP_PLUGIN_DIR_PATH ."pages/header_js.php"; ?>
                         <style>
-                            /
-                            /
-                            TODO: move to includable file
-
                             @media (min-width: 1200px) {
                                 .container, .container-lg, .container-md, .container-sm, .container-xl {
                                     max-width: 95% !important;

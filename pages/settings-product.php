@@ -16,14 +16,7 @@ require_once __DIR__ . '/../' . 'header.php';
             <div class="page">
                 <!-- container opened -->
                 <div class="container">
-                    <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-                    <link href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css" rel="stylesheet">
-                    <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/flat-ui.css">
-                    <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/common.css">
-                    <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-                    <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
-                    <script type="text/javascript" src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/tabulator.min.js"></script>
-                    <script type="text/javascript" src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/xlsx.full.min.js"></script>
+	                <?php include SP_PLUGIN_DIR_PATH ."pages/header_js.php"; ?>
                     <style>
                         .sp-settings-form p {
                             margin-top: 3%;

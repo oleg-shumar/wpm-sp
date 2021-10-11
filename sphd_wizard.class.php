@@ -59,7 +59,7 @@ class SPHD_Wizard {
 	 * Scripts for pages in menu
 	 */
 	public static function include_scripts_styles() {
-		wp_enqueue_script( 'spdh_wizard_script', plugins_url( '/wizard/assets/spdh_wizard_index.js', SPDH_ROOT ), array( 'jquery' ), time(), true );
+		wp_enqueue_script( 'sp-wizard', plugins_url( '/wizard/assets/spdh_wizard_index.js', SPDH_ROOT ), array( 'jquery' ), time(), true );
 	}
 
 	/**

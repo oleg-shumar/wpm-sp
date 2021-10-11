@@ -65,16 +65,7 @@ if ( $tmp ) {
                 <div class="page">
                     <!-- container opened -->
                     <div class="container">
-                        <link href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/tabulator.min.css"
-                              rel="stylesheet">
-
-                        <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js"></script>
-                        <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/moment.min.js"></script>
-
-                        <script type="text/javascript"
-                                src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/tabulator.min.js"></script>
-                        <script type="text/javascript"
-                                src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/xlsx.full.min.js"></script>
+	                    <?php include SP_PLUGIN_DIR_PATH ."pages/header_js.php"; ?>
 
                         <h4><?php echo  __( 'Warehouses', QA_MAIN_DOMAIN ); ?></h4>
 

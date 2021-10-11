@@ -50,8 +50,6 @@ require_once __DIR__ . '/../' . 'header.php';
             <div class="page">
                 <!-- container opened -->
                 <div class="container" style="max-width: 100%;">
-                    <link rel="stylesheet" href="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-                    <script src="<?php echo  SP_PLUGIN_DIR_URL; ?>assets/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
                     <style>
                         .sp-settings-form p {
                             margin-top: 3%;
@@ -174,7 +172,6 @@ require_once __DIR__ . '/../' . 'header.php';
                             <script>
                                 let category_mapping = <?php echo  json_encode( $category_mapping ) ?>;
                             </script>
-                            <script src="<?php echo  esc_attr( SP_PLUGIN_DIR_URL ) ?>assets/js/drag-n-drop-new.js?<?php echo  time() ?>"></script>
                             <input style="margin-top: 2em" type="submit" class="btn btn-sm btn-success" value="Save Settings" name="save-store-settings"/>
                         </form>
                     </div>

@@ -1,10 +1,5 @@
 <!-- Back-to-top -->
 <a href="#top" id="back-to-top"><i class="las la-angle-double-up"></i></a>
-<!--Internal Apexchart js-->
-<?php if($_GET['page'] == 'sp_integrations'){ ?>
-<script src="<?php echo  plugin_dir_url( __FILE__ ); ?>assets/js/apexcharts.js"></script>
-<?php } ?>
-<script src="<?php echo  plugin_dir_url( __FILE__ ); ?>assets/js/custom.js"></script>
 <?php if($_GET['page'] == 'sp_integrations'){ ?>
 <script>
     /*--- Apex (#chart) ---*/

@@ -13,9 +13,25 @@ class SPHD_Admin {
 		add_action( 'admin_menu', array( __CLASS__, 'register_menu' ) );
 	}
 
+	/**
+	 * Plugin Deactivation Event
+	 */
 	public static function include_scripts_styles() {
-		// Plugin Deactivation
-		wp_enqueue_script( 'wp-deactivation-message', plugin_dir_url( __FILE__ ) . 'assets/js/sp_deactivate.js', array(), time(), true );
+		wp_enqueue_script( 'sp-wp-deactivation-message', plugin_dir_url( __FILE__ ) . 'assets/js/sp_deactivate.js', array(), time(), true );
+		wp_enqueue_script( 'sp-moment', plugin_dir_url( __FILE__ ) . 'assets/js/moment.min.js', array( 'jquery' ), time(), true );
+		wp_enqueue_script( 'sp-tabulator', plugin_dir_url( __FILE__ ) . 'assets/js/tabulator.min.js', array( 'jquery' ), time(), false );
+		wp_enqueue_script( 'sp-xlsx', plugin_dir_url( __FILE__ ) . 'assets/js/xlsx.full.min.js', array( 'jquery' ), time(), true );
+		wp_enqueue_script( 'sp-apexcharts', plugin_dir_url( __FILE__ ) . 'assets/js/apexcharts.js', array( 'jquery' ), time(), false );
+		wp_enqueue_script( 'sp-custom', plugin_dir_url( __FILE__ ) . 'assets/js/custom.js', array( 'jquery' ), time(), false );
+		wp_enqueue_script( 'sp-drag-n-drop-new', plugin_dir_url( __FILE__ ) . 'assets/js/drag-n-drop-new.js', array( 'jquery' ), time(), false );
+		wp_enqueue_style( 'sp-tabulator-css', plugin_dir_url( __FILE__ ) . 'assets/tabulator.min.css' );
+		wp_enqueue_style( 'sp-icons-css', plugin_dir_url( __FILE__ ) . 'assets/css/icons.css' );
+		wp_enqueue_style( 'sp-sidebar-css', plugin_dir_url( __FILE__ ) . 'assets/plugins/sidebar/sidebar.css' );
+		wp_enqueue_style( 'sp-style-css', plugin_dir_url( __FILE__ ) . 'assets/css/style.css' );
+		wp_enqueue_style( 'sp-style-dark-css', plugin_dir_url( __FILE__ ) . 'assets/css/style-dark.css' );
+		wp_enqueue_style( 'sp-skin-modes-css', plugin_dir_url( __FILE__ ) . 'assets/css/skin-modes.css' );
+		wp_enqueue_style( 'sp-animate-css', plugin_dir_url( __FILE__ ) . 'assets/css/animate.css' );
+		wp_enqueue_style( 'sp-closed-sidemenu-css', plugin_dir_url( __FILE__ ) . 'assets/css/closed-sidemenu.css' );
 	}
 
 	/**
